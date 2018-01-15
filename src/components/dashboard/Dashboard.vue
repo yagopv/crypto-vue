@@ -27,7 +27,7 @@ import TickerToolbar from './TickerToolbar';
 export default {
   name: 'Dashboard',
   computed: mapGetters({
-    tickers: 'tickers'
+    tickers: 'byId'
   }),
   created() {
     this.$store.dispatch('getTickers');

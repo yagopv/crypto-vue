@@ -1,16 +1,18 @@
 import * as types from '../mutation-types';
 import { getTickers } from '@/api/tickers';
+import { mapKeys } from 'lodash';
+import { flow, map, orderBy } from 'lodash/fp';
 
 // Initial state
 const state = {
-  tickers: [],
+  byId: {},
   loading: false,
   error: null
 };
 
 // getters
 const getters = {
-  tickers: state => state.tickers,
+  byId: state => flow(map(ticker => ticker), orderBy('rank'))(state.byId),
   isLoading: state => state.isLoading,
   error: state => state.error
 };
@@ -36,7 +38,7 @@ const mutations = {
   },
 
   [types.GET_TICKERS_SUCCESS](state, tickers) {
-    state.tickers = tickers;
+    state.byId = mapKeys(tickers, ticker => ticker.id);
     state.loading = false;
     state.error = null;
   },
