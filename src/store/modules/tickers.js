@@ -7,14 +7,16 @@ import { flow, map, orderBy } from 'lodash/fp';
 const state = {
   byId: {},
   loading: false,
-  error: null
+  error: null,
+  isTreeviewVisible: true
 };
 
 // getters
 const getters = {
   byId: state => flow(map(ticker => ticker), orderBy('rank'))(state.byId),
   isLoading: state => state.isLoading,
-  error: state => state.error
+  error: state => state.error,
+  isTreeviewVisible: state => state.isTreeviewVisible
 };
 
 // actions
@@ -27,6 +29,9 @@ const actions = {
     } catch (error) {
       commit(types.GET_TICKERS_FAILED, error);
     }
+  },
+  toggleTreeVisibility({ commit }, isVisible) {
+    commit(types.TOGGLE_TREEVIEW_VISIBILITY, isVisible);
   }
 };
 
@@ -43,9 +48,13 @@ const mutations = {
     state.error = null;
   },
 
-  [types.GET_TICKERS_FAILED](state, { error }) {
+  [types.GET_TICKERS_FAILED](state, error) {
     state.loading = false;
     state.error = error;
+  },
+
+  [types.TOGGLE_TREEVIEW_VISIBILITY](state, isVisible) {
+    state.isTreeviewVisible = isVisible;
   }
 };
 

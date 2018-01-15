@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col">
-        <ticker-toolbar></ticker-toolbar>
+        <ticker-toolbar :is-treeview-visible="true" :toggle-treeview-visibility="toggleTreeviewVisibility"></ticker-toolbar>
       </div>
     </div>
     <div class="row">
@@ -26,8 +26,17 @@ import TickerToolbar from './TickerToolbar';
 
 export default {
   name: 'Dashboard',
+  data: function () {
+    return {
+      isTreeviewVisible: true
+    }
+  },
+  methods: function () {
+    toggleTreeviewVisibility: (isVisible) => this.$store.dispatch('isTreeviewVisible', isVisible);
+  },
   computed: mapGetters({
-    tickers: 'byId'
+    tickers: 'byId',
+    isTreeviewVisible: 'isTreeviewVisible'
   }),
   created() {
     this.$store.dispatch('getTickers');
