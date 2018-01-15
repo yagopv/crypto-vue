@@ -1,26 +1,28 @@
 <template>
   <div class="container-fluid">
-    <div class="table-responsive">
-      <table class="table">
-        <thead class="thead-dark">
-          <ticker-table-head></ticker-table-head>
-        </thead>
-        <tbody>
-          <ticker-table-row
-            v-for="ticker in tickers"
-            :key="ticker.id"
-            :ticker="ticker">
-          </ticker-table-row>
-        </tbody>
-      </table>
+    <div class="row">
+      <div class="col">
+        <ticker-toolbar></ticker-toolbar>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <ticker-table :tickers="tickers"></ticker-table>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <ticker-tree-map :tickers="tickers"></ticker-tree-map>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
-import TickerTableHead from './TickerTableHead';
-import TickerTableRow from './TickerTableRow';
+import TickerTable from './TickerTable';
+import TickerTreeMap from './TickerTreeMap';
+import TickerToolbar from './TickerToolbar';
 
 export default {
   name: 'Dashboard',
@@ -30,10 +32,6 @@ export default {
   created() {
     this.$store.dispatch('getTickers');
   },
-  components: { TickerTableHead, TickerTableRow }
+  components: { TickerTable, TickerTreeMap, TickerToolbar }
 };
 </script>
-
-<style scoped>
-
-</style>
