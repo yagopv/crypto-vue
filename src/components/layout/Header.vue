@@ -7,9 +7,6 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item" :class="{'active': subIsActive('/')}">
-        <router-link to="/" class="nav-link">Home</router-link>
-      </li>
       <li class="nav-item" :class="{'active': subIsActive('/dashboard')}">
         <router-link to="dashboard" class="nav-link">Dashboard</router-link>
       </li>
