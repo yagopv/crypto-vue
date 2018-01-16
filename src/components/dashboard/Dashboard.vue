@@ -2,17 +2,17 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col">
-        <ticker-toolbar :is-treeview-visible="true" :toggle-treeview-visibility="toggleTreeviewVisibility"></ticker-toolbar>
+        <ticker-toolbar :is-treeview-visible="isTreeviewVisible" :toggle-treeview-visibility="toggleTreeviewVisibility"></ticker-toolbar>
       </div>
     </div>
-    <div class="row">
+    <div class="row" v-if="!isTreeviewVisible">
       <div class="col">
-        <ticker-table :tickers="tickers"></ticker-table>
+        <ticker-table :tickers="listData"></ticker-table>
       </div>
     </div>
-    <div class="row">
+    <div class="row" v-if="isTreeviewVisible">
       <div class="col">
-        <ticker-tree-map :tickers="tickers"></ticker-tree-map>
+        <ticker-tree-map :tickers="treeViewData"></ticker-tree-map>
       </div>
     </div>
   </div>
@@ -26,17 +26,15 @@ import TickerToolbar from './TickerToolbar';
 
 export default {
   name: 'Dashboard',
-  data: function () {
-    return {
-      isTreeviewVisible: true
+  methods: {
+    toggleTreeviewVisibility: function(isVisible) {
+      this.$store.dispatch('toggleTreeVisibility', isVisible);
     }
   },
-  methods: function () {
-    toggleTreeviewVisibility: (isVisible) => this.$store.dispatch('isTreeviewVisible', isVisible);
-  },
   computed: mapGetters({
-    tickers: 'byId',
-    isTreeviewVisible: 'isTreeviewVisible'
+    listData: 'byId',
+    isTreeviewVisible: 'isTreeviewVisible',
+    treeViewData: 'treeViewData'
   }),
   created() {
     this.$store.dispatch('getTickers');

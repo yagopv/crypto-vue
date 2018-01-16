@@ -5,19 +5,6 @@
 
 <script>
 import * as d3 from 'd3';
-
-var data = {
-  name: 'cluster',
-  children: [
-    { name: 'Google', mcap: 360.43 },
-    { name: 'Microsoft', mcap: 325.71 },
-    { name: 'Oracle', mcap: 183.75 },
-    { name: 'Apple', mcap: 517.66 },
-    { name: 'HP', mcap: 61.72 },
-    { name: 'Intel', mcap: 130.27 }
-  ]
-};
-
 export default {
   props: ['tickers'],
   mounted: function() {
@@ -28,7 +15,7 @@ export default {
 
     const div = d3.select('.treemap');
 
-    const root = d3.hierarchy(data, d => d.children).sum(d => d.mcap);
+    const root = d3.hierarchy(this.tickers, d => d.children).sum(d => d.mcap);
 
     const tree = treemap(root);
 
@@ -56,7 +43,7 @@ export default {
               return d.size;
             };
 
-      const newRoot = d3.hierarchy(data, d => d.children).sum(value);
+      const newRoot = d3.hierarchy(this.tickers, d => d.children).sum(value);
 
       node
         .data(treemap(newRoot).leaves())
@@ -73,10 +60,10 @@ export default {
 
 <style lang="scss">
 .treemap {
-  min-height: 900px;
+  min-height: 600px;
   position: relative;
   .node {
-    font-size: 250%;
+    font-size: 200%;
     line-height: 150%;
     overflow: hidden;
     position: absolute;

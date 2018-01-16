@@ -1,7 +1,9 @@
 import * as types from '../mutation-types';
 import { getTickers } from '@/api/tickers';
-import { mapKeys } from 'lodash';
-import { flow, map, orderBy } from 'lodash/fp';
+import mapKeys from 'lodash/mapKeys';
+import flow from 'lodash/fp/flow';
+import map from 'lodash/fp/map';
+import orderBy from 'lodash/fp/orderBy';
 
 // Initial state
 const state = {
@@ -13,10 +15,21 @@ const state = {
 
 // getters
 const getters = {
-  byId: state => flow(map(ticker => ticker), orderBy('rank'))(state.byId),
+  byId: state =>
+    flow(map(ticker => ticker), orderBy([{ rank: Number }], ['asc']))(
+      state.byId
+    ),
   isLoading: state => state.isLoading,
   error: state => state.error,
-  isTreeviewVisible: state => state.isTreeviewVisible
+  isTreeviewVisible: state => state.isTreeviewVisible,
+  treeViewData: function(state) {
+    return {
+      name: 'cluster',
+      children: flow(
+        map(ticker => ({ name: ticker.name, mcap: ticker.market_cap_usd }))
+      )(state.byId)
+    };
+  }
 };
 
 // actions
