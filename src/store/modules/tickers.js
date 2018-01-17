@@ -4,6 +4,7 @@ import mapKeys from 'lodash/mapKeys';
 import flow from 'lodash/fp/flow';
 import map from 'lodash/fp/map';
 import orderBy from 'lodash/fp/orderBy';
+import * as _ from 'lodash';
 
 // Initial state
 const state = {
@@ -23,6 +24,12 @@ const getters = {
   error: state => state.error,
   isTreeviewVisible: state => state.isTreeviewVisible,
   treeViewData: function(state) {
+    const monsters = _.filter(state.byId, ticker => parseInt(ticker.market_cap_usd) > 10000000000);
+    const big = _.filter(state.byId, ticker => parseInt(ticker.market_cap_usd) > 100000000 && parseInt(ticker.market_cap_usd) <= 10000000000);
+    const medium = _.filter(state.byId, ticker => parseInt(ticker.market_cap_usd) > 1000000 && parseInt(ticker.market_cap_usd) <= 1000000000);
+    const small = _.filter(state.byId, ticker => parseInt(ticker.market_cap_usd) <= 1000000);
+
+    console.log('monster: ', monsters, 'big:', big, 'medium:', medium, 'small:', small);
     return {};
   }
 };
