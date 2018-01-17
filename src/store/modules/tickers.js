@@ -23,12 +23,7 @@ const getters = {
   error: state => state.error,
   isTreeviewVisible: state => state.isTreeviewVisible,
   treeViewData: function(state) {
-    return {
-      name: 'cluster',
-      children: flow(
-        map(ticker => ({ name: ticker.name, mcap: ticker.market_cap_usd }))
-      )(state.byId)
-    };
+    return {};
   }
 };
 
