@@ -24,13 +24,38 @@ const getters = {
   error: state => state.error,
   isTreeviewVisible: state => state.isTreeviewVisible,
   treeViewData: function(state) {
-    const monsters = _.filter(state.byId, ticker => parseInt(ticker.market_cap_usd) > 10000000000);
-    const big = _.filter(state.byId, ticker => parseInt(ticker.market_cap_usd) > 100000000 && parseInt(ticker.market_cap_usd) <= 10000000000);
-    const medium = _.filter(state.byId, ticker => parseInt(ticker.market_cap_usd) > 1000000 && parseInt(ticker.market_cap_usd) <= 1000000000);
-    const small = _.filter(state.byId, ticker => parseInt(ticker.market_cap_usd) <= 1000000);
+    const monsters = _.filter(state.byId, ticker => parseInt(ticker.market_cap_usd) > 1000000000)
+                      .map((ticker, index) => ({ id: `id-1-${index}`, name: ticker.name, parent: 'id-1', value: parseInt(ticker.market_cap_usd) }));
+    const big = _.filter(state.byId, ticker => parseInt(ticker.market_cap_usd) > 10000000 && parseInt(ticker.market_cap_usd) <= 1000000000)
+                      .map((ticker, index) => ({ id: `id-2-${index}`, name: ticker.name, parent: 'id-2', value: parseInt(ticker.market_cap_usd) }));
+    const medium = _.filter(state.byId, ticker => parseInt(ticker.market_cap_usd) > 100000 && parseInt(ticker.market_cap_usd) <= 100000000)
+                      .map((ticker, index) => ({ id: `id-3-${index}`, name: ticker.name, parent: 'id-3', value: parseInt(ticker.market_cap_usd) }));
+    const small = _.filter(state.byId, ticker => parseInt(ticker.market_cap_usd) <= 100000)
+                      .map((ticker, index) => ({ id: `id-4-${index}`, name: ticker.name, parent: 'id-4', value: parseInt(ticker.market_cap_usd) }));
 
-    console.log('monster: ', monsters, 'big:', big, 'medium:', medium, 'small:', small);
-    return {};
+    let result = [];
+
+    result.push({
+      name: '>10 billion',
+      id: 'id-1'
+    }, {
+      name: '>10 million - <= 10 billion',
+      id: 'id-2'
+    }, {
+      name: '>1 million - <= 10 million',
+      id: 'id-3'
+    }, {
+      name: '<1 million',
+      id: 'id-4'
+    })
+
+    result = result.concat(monsters);
+    result = result.concat(big);
+    result = result.concat(medium);
+    result = result.concat(small);
+
+    console.log(result);
+    return result;
   }
 };
 

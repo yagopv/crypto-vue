@@ -12,7 +12,7 @@
     </div>
     <div class="row" v-if="isTreeviewVisible">
       <div class="col">
-        <ticker-tree-map :tickers="treeViewData"></ticker-tree-map>
+        <ticker-tree-map :tickers="treeViewData" v-if="treeViewData.length > 100"></ticker-tree-map>
       </div>
     </div>
   </div>
