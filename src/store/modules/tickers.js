@@ -24,30 +24,67 @@ const getters = {
   error: state => state.error,
   isTreeviewVisible: state => state.isTreeviewVisible,
   treeViewData: function(state) {
-    const monsters = _.filter(state.byId, ticker => parseInt(ticker.market_cap_usd) > 1000000000)
-                      .map((ticker, index) => ({ id: `id-1-${index}`, name: ticker.name, parent: 'id-1', value: parseInt(ticker.market_cap_usd) }));
-    const big = _.filter(state.byId, ticker => parseInt(ticker.market_cap_usd) > 10000000 && parseInt(ticker.market_cap_usd) <= 1000000000)
-                      .map((ticker, index) => ({ id: `id-2-${index}`, name: ticker.name, parent: 'id-2', value: parseInt(ticker.market_cap_usd) }));
-    const medium = _.filter(state.byId, ticker => parseInt(ticker.market_cap_usd) > 100000 && parseInt(ticker.market_cap_usd) <= 100000000)
-                      .map((ticker, index) => ({ id: `id-3-${index}`, name: ticker.name, parent: 'id-3', value: parseInt(ticker.market_cap_usd) }));
-    const small = _.filter(state.byId, ticker => parseInt(ticker.market_cap_usd) <= 100000)
-                      .map((ticker, index) => ({ id: `id-4-${index}`, name: ticker.name, parent: 'id-4', value: parseInt(ticker.market_cap_usd) }));
+    const monsters = _.filter(
+      state.byId,
+      ticker => parseInt(ticker.market_cap_usd) > 50000000000
+    ).map((ticker, index) => ({
+      id: `id-1-${index}`,
+      name: ticker.name,
+      parent: 'id-1',
+      value: parseInt(ticker.market_cap_usd)
+    }));
+    const big = _.filter(
+      state.byId,
+      ticker =>
+        parseInt(ticker.market_cap_usd) > 20000000000 &&
+        parseInt(ticker.market_cap_usd) <= 50000000000
+    ).map((ticker, index) => ({
+      id: `id-2-${index}`,
+      name: ticker.name,
+      parent: 'id-2',
+      value: parseInt(ticker.market_cap_usd)
+    }));
+    const medium = _.filter(
+      state.byId,
+      ticker =>
+        parseInt(ticker.market_cap_usd) > 1000000000 &&
+        parseInt(ticker.market_cap_usd) <= 20000000000
+    ).map((ticker, index) => ({
+      id: `id-3-${index}`,
+      name: ticker.name,
+      parent: 'id-3',
+      value: parseInt(ticker.market_cap_usd)
+    }));
+    const small = _.filter(
+      state.byId,
+      ticker => parseInt(ticker.market_cap_usd) <= 1000000000
+    ).map((ticker, index) => ({
+      id: `id-4-${index}`,
+      name: ticker.name,
+      parent: 'id-4',
+      value: parseInt(ticker.market_cap_usd)
+    }));
 
     let result = [];
 
-    result.push({
-      name: '>10 billion',
-      id: 'id-1'
-    }, {
-      name: '>10 million - <= 10 billion',
-      id: 'id-2'
-    }, {
-      name: '>1 million - <= 10 million',
-      id: 'id-3'
-    }, {
-      name: '<1 million',
-      id: 'id-4'
-    })
+    result.push(
+      {
+        name: '>50 billion',
+        id: 'id-1'
+      },
+      {
+        name: '>20 billion - <= 50 billion',
+        id: 'id-2'
+      },
+      {
+        name: '>1 billion - <= 20 billion',
+        id: 'id-3'
+      },
+      {
+        name: '<1 billion',
+        id: 'id-4'
+      }
+    );
 
     result = result.concat(monsters);
     result = result.concat(big);
@@ -55,6 +92,7 @@ const getters = {
     result = result.concat(small);
 
     console.log(result);
+    console.log(small);
     return result;
   }
 };

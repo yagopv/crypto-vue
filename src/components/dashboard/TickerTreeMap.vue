@@ -10,7 +10,7 @@ export default {
   data: function() {
     return {
       options: {}
-    }
+    };
   },
   mounted: function() {
     this.options = {
@@ -19,7 +19,8 @@ export default {
           type: 'treemap',
           layoutAlgorithm: 'squarified',
           allowDrillToNode: true,
-          animationLimit: 1000,
+          animationLimit: this.tickers.length,
+          turboThreshold: 2000,
           dataLabels: {
             enabled: false
           },
@@ -33,7 +34,7 @@ export default {
               borderWidth: 3
             }
           ],
-          data: _.take(this.tickers, 1000)
+          data: this.tickers
         }
       ],
       subtitle: {
@@ -43,7 +44,7 @@ export default {
       title: {
         text: 'Crypto marketcap'
       }
-    }
+    };
   }
 };
 </script>
