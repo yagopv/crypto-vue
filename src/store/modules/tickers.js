@@ -1,3 +1,4 @@
+import Highcharts from 'highcharts';
 import * as types from '../mutation-types';
 import { getTickers } from '@/api/tickers';
 import mapKeys from 'lodash/mapKeys';
@@ -31,7 +32,8 @@ const getters = {
       id: `id-1-${index}`,
       name: ticker.name,
       parent: 'id-1',
-      value: parseInt(ticker.market_cap_usd)
+      value: parseInt(ticker.market_cap_usd),
+      color: Highcharts.getOptions().colors[0]
     }));
     const big = _.filter(
       state.byId,
@@ -42,7 +44,8 @@ const getters = {
       id: `id-2-${index}`,
       name: ticker.name,
       parent: 'id-2',
-      value: parseInt(ticker.market_cap_usd)
+      value: parseInt(ticker.market_cap_usd),
+      color: Highcharts.getOptions().colors[1]
     }));
     const medium = _.filter(
       state.byId,
@@ -53,7 +56,8 @@ const getters = {
       id: `id-3-${index}`,
       name: ticker.name,
       parent: 'id-3',
-      value: parseInt(ticker.market_cap_usd)
+      value: parseInt(ticker.market_cap_usd),
+      color: Highcharts.getOptions().colors[2]
     }));
     const small = _.filter(
       state.byId,
@@ -62,7 +66,8 @@ const getters = {
       id: `id-4-${index}`,
       name: ticker.name,
       parent: 'id-4',
-      value: parseInt(ticker.market_cap_usd)
+      value: parseInt(ticker.market_cap_usd),
+      color: Highcharts.getOptions().colors[3]
     }));
 
     let result = [];

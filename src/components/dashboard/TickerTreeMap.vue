@@ -25,11 +25,24 @@ export default {
             enabled: false
           },
           levelIsConstant: false,
+          point: {
+            events: {
+              click: (event) => console.log(event)
+            }
+          },
+          tooltip: {
+            valueDecimals: 2,
+            valuePrefix: '$',
+            valueSuffix: ' USD'
+            //pointFormatter: function () {}
+          },
           levels: [
             {
               level: 1,
               dataLabels: {
-                enabled: true
+                enabled: true,
+                color: '#FFF',
+                font: 'bold 26px "Open Sans", sans-serif'
               },
               borderWidth: 3
             }
@@ -43,6 +56,9 @@ export default {
       },
       title: {
         text: 'Crypto marketcap'
+      },
+      chart: {
+        height: 900
       }
     };
   }
@@ -50,5 +66,7 @@ export default {
 </script>
 
 <style lang="scss">
-
+  .highcharts-container  {
+    height: 900px !important;
+  }
 </style>
