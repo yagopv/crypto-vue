@@ -18,6 +18,7 @@
     "ccxt": "^1.10.668",
     "highcharts": "^6.0.4",
     "lodash": "^4.17.4",
+    "numeral": "^2.0.6",
     "vue": "^2.5.2",
     "vue-highcharts": "0.0.10",
     "vue-router": "^3.0.1",
