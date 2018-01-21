@@ -2,7 +2,9 @@
   <div id="app">
     <Header />
     <div id="page">
-      <router-view/>
+      <transition name="slide-fade">
+        <router-view/>
+      </transition>
     </div>
   </div>
 </template>
@@ -25,4 +27,12 @@ export default {
 <style lang="scss">
 @import '../sass/app-bootstrap.scss';
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';
+
+.slide-fade-enter-active {
+  transition: all 0.4s ease;
+}
+.slide-fade-enter {
+  transform: translateX(20px);
+  opacity: 0;
+}
 </style>

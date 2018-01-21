@@ -21,6 +21,7 @@ const getters = {
     flow(map(ticker => ticker), orderBy([{ rank: Number }], ['asc']))(
       state.byId
     ),
+  tickers: state => state.byId,
   isLoading: state => state.isLoading,
   error: state => state.error,
   isTreeviewVisible: state => state.isTreeviewVisible,
@@ -113,6 +114,7 @@ const actions = {
       commit(types.GET_TICKERS_FAILED, error);
     }
   },
+
   toggleTreeVisibility({ commit }, isVisible) {
     commit(types.TOGGLE_TREEVIEW_VISIBILITY, isVisible);
   }

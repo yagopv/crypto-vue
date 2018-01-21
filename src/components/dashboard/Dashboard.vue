@@ -7,7 +7,7 @@
     </div>
     <div class="row" v-if="!isTreeviewVisible">
       <div class="col">
-        <ticker-table :tickers="listData"></ticker-table>
+        <ticker-table :tickers="listData" :select-ticker="selectTicker"></ticker-table>
       </div>
     </div>
     <div class="row" v-if="isTreeviewVisible">
@@ -29,6 +29,12 @@ export default {
   methods: {
     toggleTreeviewVisibility: function(isVisible) {
       this.$store.dispatch('toggleTreeVisibility', isVisible);
+    },
+    selectTicker: function(ticker) {
+      this.$router.push({
+        name: 'TickerDetail',
+        params: { id: ticker.id }
+      });
     }
   },
   computed: mapGetters({
