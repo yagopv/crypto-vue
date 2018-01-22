@@ -21,6 +21,7 @@ const getters = {
     flow(map(ticker => ticker), orderBy([{ rank: Number }], ['asc']))(
       state.byId
     ),
+  getSymbol: state => id => state.byId[id] && state.byId[id].symbol,
   tickers: state => state.byId,
   isLoading: state => state.isLoading,
   error: state => state.error,

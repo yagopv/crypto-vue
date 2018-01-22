@@ -17,8 +17,12 @@ export default {
     ...mapGetters({
       tickers: 'tickers'
     }),
+    getSymbol: function () {
+      return this.$store.getters.getSymbol(this.$route.params.id);
+    },
     ohlcAndVolume: function() {
-      return this.$store.getters.getOhlcAndVolumes(this.$route.params.id);
+      const symbol = this.$store.getters.getSymbol(this.$route.params.id);
+      return this.$store.getters.getOhlcAndVolumes(symbol);
     }
   },
   created() {
