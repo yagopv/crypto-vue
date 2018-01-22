@@ -1,5 +1,6 @@
 import * as types from '../mutation-types';
 import { getHistoDay } from '@/api/histodata';
+import moment from 'moment';
 
 // Initial state
 const state = {
@@ -7,7 +8,25 @@ const state = {
 };
 
 // getters
-const getters = {};
+const getters = {
+  getOhlcAndVolumes: state => symbol => {
+    const ohlc = [];
+    const volume = [];
+    const data = state.bySymbol[symbol] && state.bySymbol[symbol]['Data'];
+    if (data) {
+      data.map(item => {
+        const time = item.time * 1000;
+        ohlc.push([time, item.open, item.close, item.low, item.close]);
+        volume.push([time, item.volumeto]);
+      });
+    }
+
+    return {
+      ohlc,
+      volume
+    };
+  }
+};
 
 // actions
 const actions = {

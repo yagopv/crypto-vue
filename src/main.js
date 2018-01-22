@@ -11,13 +11,15 @@ import router from './router';
 import Highcharts from 'highcharts';
 import loadHeatmap from 'highcharts/modules/heatmap';
 import loadTreemap from 'highcharts/modules/treemap';
+import loadStock from 'highcharts/modules/stock';
 
+loadStock(Highcharts);
 loadHeatmap(Highcharts);
 loadTreemap(Highcharts);
 
 Vue.config.productionTip = false;
 Vue.use(Vuex);
-Vue.use(VueHighcharts);
+Vue.use(VueHighcharts, { Highcharts });
 
 /* eslint-disable no-new */
 new Vue({
