@@ -1,6 +1,5 @@
 import * as types from '../mutation-types';
 import { getHistoDay } from '@/api/histodata';
-import moment from 'moment';
 
 // Initial state
 const state = {
@@ -30,8 +29,12 @@ const getters = {
 
 // actions
 const actions = {
-  async getHistoDay({ commit }, symbol) {
+  async getHistoDay({ commit, dispatch, state, rootState }, id) {
     try {
+      if (!rootState.tickers.byId.id) {
+        await dispatch('getTickers');
+      }
+      const symbol = rootState.tickers.byId[id].symbol;
       commit(types.GET_HISTO_DAY);
       const { data } = await getHistoDay(symbol);
       commit(types.GET_HISTO_DAY_SUCCESS, { data, symbol });
@@ -49,7 +52,7 @@ const mutations = {
   },
 
   [types.GET_HISTO_DAY_SUCCESS](state, { data, symbol }) {
-    state.bySymbol[symbol] = data;
+    state.bySymbol = {...state.bySymbol, [symbol]: data};
     state.loading = false;
     state.error = null;
   },

@@ -8,10 +8,10 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item" :class="{'active': subIsActive('/dashboard')}">
-        <router-link to="dashboard" class="nav-link">Dashboard</router-link>
+        <router-link to="/dashboard" class="nav-link">Dashboard</router-link>
       </li>
       <li class="nav-item" :class="{'active': subIsActive('/about')}">
-        <router-link to="about" class="nav-link">About</router-link>
+        <router-link to="/about" class="nav-link">About</router-link>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">

@@ -12,7 +12,7 @@ const state = {
   byId: {},
   loading: false,
   error: null,
-  isTreeviewVisible: true
+  isTreeviewVisible: false
 };
 
 // getters

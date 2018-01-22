@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>TickerDetail</h1>
-    <div v-if="ohlcAndVolume.ohlc">
+    <div v-if="ohlcAndVolume.ohlc.length">
       <candlestick :ohlc="ohlcAndVolume.ohlc" :volume="ohlcAndVolume.volume"></candlestick>
     </div>
   </div>
@@ -18,15 +18,13 @@ export default {
       tickers: 'tickers'
     }),
     ohlcAndVolume: function() {
-      return this.$store.getters.getOhlcAndVolumes(
-        this.tickers[this.$route.params.id].symbol
-      );
+      return this.$store.getters.getOhlcAndVolumes(this.$route.params.id);
     }
   },
   created() {
     this.$store.dispatch(
       'getHistoDay',
-      this.tickers[this.$route.params.id].symbol
+      this.$route.params.id
     );
   },
   components: { Candlestick }
