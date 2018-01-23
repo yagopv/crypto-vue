@@ -13,7 +13,8 @@ const state = {
   byId: {},
   loading: false,
   error: null,
-  isTreeviewVisible: false
+  isTreemapVisible: false,
+  selectedTreemap: 0
 };
 
 // getters
@@ -26,9 +27,10 @@ const getters = {
   tickers: state => state.byId,
   isLoading: state => state.isLoading,
   error: state => state.error,
-  isTreeviewVisible: state => state.isTreeviewVisible,
-  treeViewData: state => (
-    minMarketCap,
+  isTreemapVisible: state => state.isTreemapVisible,
+  getSelectedTreemap: state => state.selectedTreemap,
+  getTreemapData: state => (
+    minMarketCap = 0,
     maxMarketCap = Number.MAX_SAFE_INTEGER
   ) => {
     return _.filter(state.byId, ticker => {
@@ -55,7 +57,11 @@ const actions = {
   },
 
   toggleTreeVisibility({ commit }, isVisible) {
-    commit(types.TOGGLE_TREEVIEW_VISIBILITY, isVisible);
+    commit(types.TOGGLE_TREEMAP_VISIBILITY, isVisible);
+  },
+
+  selectTreemap({ commit }, option) {
+    commit(types.SELECT_TREEMAP, option);
   }
 };
 
@@ -77,8 +83,12 @@ const mutations = {
     state.error = error;
   },
 
-  [types.TOGGLE_TREEVIEW_VISIBILITY](state, isVisible) {
-    state.isTreeviewVisible = isVisible;
+  [types.TOGGLE_TREEMAP_VISIBILITY](state, isVisible) {
+    state.isTreemapVisible = isVisible;
+  },
+
+  [types.SELECT_TREEMAP](state, option) {
+    state.selectedTreemap = option;
   }
 };
 

@@ -6,7 +6,7 @@
 import Highcharts from 'highcharts';
 
 export default {
-  props: ['tickers'],
+  props: ['tickers', 'height'],
   data: function() {
     return {
       options: {}
@@ -20,11 +20,9 @@ export default {
           layoutAlgorithm: 'squarified',
           allowDrillToNode: true,
           animationLimit: this.tickers.length,
+          layoutStartingDirection: 'horizontal',
           turboThreshold: 2000,
           colorByPoint: true,
-          dataLabels: {
-            enabled: false
-          },
           cursor: 'pointer',
           levelIsConstant: false,
           point: {
@@ -56,15 +54,9 @@ export default {
         text: ''
       },
       chart: {
-        height: 600
+        height: this.height
       }
     };
   }
 };
 </script>
-
-<style lang="scss">
-.highcharts-container {
-  height: 900px !important;
-}
-</style>
