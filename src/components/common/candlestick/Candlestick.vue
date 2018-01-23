@@ -3,8 +3,6 @@
 </template>
 
 <script>
-import * as _ from 'lodash';
-
 export default {
   props: ['ohlc', 'volume'],
   data: function() {
@@ -13,14 +11,6 @@ export default {
     };
   },
   mounted: function() {
-    const groupingUnits = [
-      [
-        'week', // unit name
-        [1] // allowed multiples
-      ],
-      ['month', [1, 2, 3, 4, 6]]
-    ];
-
     this.options = {
       rangeSelector: {
         selected: 1

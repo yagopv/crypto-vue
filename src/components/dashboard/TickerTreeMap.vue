@@ -3,8 +3,6 @@
 </template>
 
 <script>
-import * as _ from 'lodash';
-
 export default {
   props: ['tickers'],
   data: function() {
@@ -27,14 +25,14 @@ export default {
           levelIsConstant: false,
           point: {
             events: {
-              click: (event) => console.log(event)
+              click: event => console.log(event)
             }
           },
           tooltip: {
             valueDecimals: 2,
             valuePrefix: '$',
             valueSuffix: ' USD'
-            //pointFormatter: function () {}
+            // pointFormatter: function () {}
           },
           levels: [
             {
@@ -66,7 +64,7 @@ export default {
 </script>
 
 <style lang="scss">
-  .highcharts-container  {
-    height: 900px !important;
-  }
+.highcharts-container {
+  height: 900px !important;
+}
 </style>

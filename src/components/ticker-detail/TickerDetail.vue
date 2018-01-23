@@ -17,7 +17,7 @@ export default {
     ...mapGetters({
       tickers: 'tickers'
     }),
-    getSymbol: function () {
+    getSymbol: function() {
       return this.$store.getters.getSymbol(this.$route.params.id);
     },
     ohlcAndVolume: function() {
@@ -26,10 +26,7 @@ export default {
     }
   },
   created() {
-    this.$store.dispatch(
-      'getHistoDay',
-      this.$route.params.id
-    );
+    this.$store.dispatch('getHistoDay', this.$route.params.id);
   },
   components: { Candlestick }
 };
