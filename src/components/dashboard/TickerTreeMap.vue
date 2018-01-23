@@ -3,6 +3,8 @@
 </template>
 
 <script>
+import Highcharts from 'highcharts';
+
 export default {
   props: ['tickers'],
   data: function() {
@@ -19,9 +21,11 @@ export default {
           allowDrillToNode: true,
           animationLimit: this.tickers.length,
           turboThreshold: 2000,
+          colorByPoint: true,
           dataLabels: {
             enabled: false
           },
+          cursor: 'pointer',
           levelIsConstant: false,
           point: {
             events: {
@@ -48,15 +52,11 @@ export default {
           data: this.tickers
         }
       ],
-      subtitle: {
-        text:
-          'Click points to drill down. Source: <a href="http://apps.who.int/gho/data/node.main.12?lang=en">WHO</a>.'
-      },
       title: {
-        text: 'Crypto marketcap'
+        text: ''
       },
       chart: {
-        height: 900
+        height: 600
       }
     };
   }

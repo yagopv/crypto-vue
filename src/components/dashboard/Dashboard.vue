@@ -12,7 +12,7 @@
     </div>
     <div class="row" v-if="isTreeviewVisible">
       <div class="col">
-        <ticker-tree-map :tickers="treeViewData" v-if="treeViewData.length > 100"></ticker-tree-map>
+        <ticker-tree-map :tickers="treeViewData" v-if="treeViewData.length"></ticker-tree-map>
       </div>
     </div>
   </div>
@@ -37,11 +37,15 @@ export default {
       });
     }
   },
-  computed: mapGetters({
-    listData: 'byId',
-    isTreeviewVisible: 'isTreeviewVisible',
-    treeViewData: 'treeViewData'
-  }),
+  computed: {
+    ...mapGetters({
+      listData: 'byId',
+      isTreeviewVisible: 'isTreeviewVisible'
+    }),
+    treeViewData: function() {
+      return this.$store.getters.treeViewData(1000000000, 100000000000000);
+    }
+  },
   created() {
     this.$store.dispatch('getTickers');
   },
