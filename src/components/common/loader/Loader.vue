@@ -2,7 +2,7 @@
   <div v-if="isLoading" class="loader-wrapper">
     <div class="loader">
       <i>
-        <font-awesome-icon icon="sync" size="2x" spin style="color: #000" />
+        <font-awesome-icon icon="sync" size="2x" spin style="color: #FFF" />
       </i>
     </div>
   </div>
@@ -24,7 +24,7 @@ export default {
   position: fixed;
   top: 0;
   left: 0;
-  background-color: #fff;
+  background-color: #000;
   width: 100%;
   height: 100%;
   z-index: 400;

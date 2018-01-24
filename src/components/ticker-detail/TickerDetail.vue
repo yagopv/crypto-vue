@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1>TickerDetail</h1>
     <div v-if="ohlcAndVolume.ohlc.length">
       <candlestick :ohlc="ohlcAndVolume.ohlc" :volume="ohlcAndVolume.volume"></candlestick>
     </div>

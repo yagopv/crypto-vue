@@ -1,9 +1,9 @@
 <template>
-  <div class="container-fluid">
+  <div>
     <div class="row">
       <div class="col">
         <div class="table-responsive">
-          <table class="table table-hover">
+          <table class="table table-hover table-dark">
             <thead class="thead-dark">
               <ticker-table-head></ticker-table-head>
             </thead>

@@ -7,6 +7,7 @@ import store from './store';
 import router from './router';
 
 import Highcharts from 'highcharts';
+import HighchartsTheme from './utils/HighchartsTheme';
 import loadHeatmap from 'highcharts/modules/heatmap';
 import loadTreemap from 'highcharts/modules/treemap';
 import loadStock from 'highcharts/modules/stock';

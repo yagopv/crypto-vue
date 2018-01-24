@@ -27,14 +27,14 @@ export default {
 };
 </script>
 
-<style scoped>
-#page {
-  padding-top: 30px;
+<style>
+body {
+  background-color: #343a40 !important; /* Avoid reboot.css overriding background color */
+  overflow-x: hidden;
 }
 </style>
 
 <style lang="scss">
-@import '../sass/app-bootstrap.scss';
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';
 
 .slide-fade-enter-active {

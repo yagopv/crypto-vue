@@ -17,7 +17,7 @@ export default {
       },
 
       title: {
-        text: 'AAPL Historical'
+        text: ''
       },
 
       yAxis: [
