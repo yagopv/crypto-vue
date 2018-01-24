@@ -1,18 +1,24 @@
 <template>
-  <div class="table-responsive">
-    <table class="table table-hover">
-      <thead class="thead-dark">
-        <ticker-table-head></ticker-table-head>
-      </thead>
-      <tbody>
-        <ticker-table-row
-          v-for="ticker in tickers"
-          :key="ticker.id"
-          :ticker="ticker"
-          :select-ticker="selectTicker">
-        </ticker-table-row>
-       </tbody>
-     </table>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col">
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead class="thead-dark">
+              <ticker-table-head></ticker-table-head>
+            </thead>
+            <tbody>
+              <ticker-table-row
+                v-for="ticker in tickers"
+                :key="ticker.id"
+                :ticker="ticker"
+                :select-ticker="selectTicker">
+              </ticker-table-row>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
