@@ -11,14 +11,18 @@ import loadHeatmap from 'highcharts/modules/heatmap';
 import loadTreemap from 'highcharts/modules/treemap';
 import loadStock from 'highcharts/modules/stock';
 
-import fontawesome from '@fortawesome/fontawesome'
-import { faList, faChartPie } from '@fortawesome/fontawesome-free-solid'
+import fontawesome from '@fortawesome/fontawesome';
+import {
+  faList,
+  faChartPie,
+  faSync
+} from '@fortawesome/fontawesome-free-solid';
 
 loadStock(Highcharts);
 loadHeatmap(Highcharts);
 loadTreemap(Highcharts);
 
-fontawesome.library.add(faList, faChartPie)
+fontawesome.library.add(faList, faChartPie, faSync);
 
 Vue.config.productionTip = false;
 Vue.use(Vuex);

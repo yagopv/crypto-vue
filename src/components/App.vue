@@ -6,15 +6,17 @@
         <router-view/>
       </transition>
     </div>
+    <Loader :is-loading="false"/>
   </div>
 </template>
 
 <script>
 import Header from './layout/Header';
+import Loader from '@/components/common/loader/Loader';
 
 export default {
   name: 'app',
-  components: { Header }
+  components: { Header, Loader }
 };
 </script>
 
