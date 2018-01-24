@@ -1,6 +1,8 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Dashboard from '@/components/dashboard/Dashboard';
+import Tickers from '@/components/tickers/Tickers';
+import TickerTable from '@/components/tickers/ticker-table/TickerTable';
+import TickerTreeMap from '@/components/tickers/ticker-treemap/TickerTreeMap';
 import TickerDetail from '@/components/ticker-detail/TickerDetail';
 import About from '@/components/about/About';
 
@@ -10,13 +12,17 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Home',
-      redirect: '/dashboard'
+      redirect: '/tickers'
     },
     {
-      path: '/dashboard',
-      name: 'Dashboard',
-      component: Dashboard
+      path: '/tickers',
+      name: 'Tickers',
+      component: Tickers,
+      children: [
+        { path: '', redirect: 'coin-list' },
+        { path: 'coin-list', component: TickerTable },
+        { path: 'maps', component: TickerTreeMap }
+      ]
     },
     {
       path: '/ticker/:id',

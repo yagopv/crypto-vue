@@ -7,8 +7,11 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item" :class="{'active': subIsActive('/dashboard')}">
-        <router-link to="/dashboard" class="nav-link">Dashboard</router-link>
+      <li class="nav-item" :class="{'active': subIsActive('/tickers/coin-list')}">
+        <router-link to="/tickers/coin-list" class="nav-link">Coin list</router-link>
+      </li>
+      <li class="nav-item" :class="{'active': subIsActive('/tickers/maps')}">
+        <router-link to="/tickers/maps" class="nav-link">Market capitalization maps</router-link>
       </li>
       <li class="nav-item" :class="{'active': subIsActive('/about')}">
         <router-link to="/about" class="nav-link">About</router-link>

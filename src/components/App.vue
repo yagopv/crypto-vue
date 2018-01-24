@@ -3,7 +3,7 @@
     <Header />
     <div id="page">
       <transition name="slide-fade">
-        <router-view/>
+        <router-view />
       </transition>
     </div>
     <Loader :is-loading="isLoading"/>
@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import Header from './layout/Header';
+import Header from '@/components/common/header/Header';
 import Loader from '@/components/common/loader/Loader';
 import { mapGetters } from 'vuex';
 

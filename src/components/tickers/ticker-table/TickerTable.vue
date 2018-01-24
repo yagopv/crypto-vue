@@ -17,11 +17,25 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 import TickerTableHead from './TickerTableHead';
 import TickerTableRow from './TickerTableRow';
 
 export default {
-  props: ['tickers', 'selectTicker'],
+  computed: {
+    ...mapGetters({
+      tickers: 'byId'
+    })
+  },
+  methods: {
+    selectTicker: function(ticker) {
+      this.$router.push({
+        name: 'TickerDetail',
+        params: { id: ticker.id }
+      });
+    }
+  },
   components: { TickerTableHead, TickerTableRow }
 };
 </script>
