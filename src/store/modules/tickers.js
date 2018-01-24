@@ -17,13 +17,12 @@ const state = {
 
 // getters
 const getters = {
-  byId: state =>
+  getTickersByRank: state =>
     flow(map(ticker => ticker), orderBy([{ rank: Number }], ['asc']))(
       state.byId
     ),
   getSymbol: state => id => state.byId[id] && state.byId[id].symbol,
-  tickers: state => state.byId,
-  isTreemapVisible: state => state.isTreemapVisible,
+  getTickers: state => state.byId,
   getSelectedTreemap: state => state.selectedTreemap,
   getTreemapData: state => (
     minMarketCap = 0,

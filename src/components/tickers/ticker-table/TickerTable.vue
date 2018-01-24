@@ -25,7 +25,7 @@ import TickerTableRow from './TickerTableRow';
 export default {
   computed: {
     ...mapGetters({
-      tickers: 'byId'
+      tickers: 'getTickersByRank'
     })
   },
   methods: {
