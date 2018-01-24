@@ -11,8 +11,6 @@ import * as _ from 'lodash';
 // Initial state
 const state = {
   byId: {},
-  loading: false,
-  error: null,
   isTreemapVisible: false,
   selectedTreemap: 0
 };
@@ -25,8 +23,6 @@ const getters = {
     ),
   getSymbol: state => id => state.byId[id] && state.byId[id].symbol,
   tickers: state => state.byId,
-  isLoading: state => state.isLoading,
-  error: state => state.error,
   isTreemapVisible: state => state.isTreemapVisible,
   getSelectedTreemap: state => state.selectedTreemap,
   getTreemapData: state => (
@@ -67,20 +63,8 @@ const actions = {
 
 // mutations
 const mutations = {
-  [types.GET_TICKERS](state) {
-    state.loading = true;
-    state.error = null;
-  },
-
   [types.GET_TICKERS_SUCCESS](state, tickers) {
     state.byId = mapKeys(tickers, ticker => ticker.id);
-    state.loading = false;
-    state.error = null;
-  },
-
-  [types.GET_TICKERS_FAILED](state, error) {
-    state.loading = false;
-    state.error = error;
   },
 
   [types.TOGGLE_TREEMAP_VISIBILITY](state, isVisible) {

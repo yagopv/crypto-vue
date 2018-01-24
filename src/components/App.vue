@@ -6,17 +6,24 @@
         <router-view/>
       </transition>
     </div>
-    <Loader :is-loading="false"/>
+    <Loader :is-loading="isLoading"/>
   </div>
 </template>
 
 <script>
 import Header from './layout/Header';
 import Loader from '@/components/common/loader/Loader';
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'app',
-  components: { Header, Loader }
+  components: { Header, Loader },
+  computed: {
+    ...mapGetters({
+      isLoading: 'isLoading',
+      error: 'getError'
+    })
+  }
 };
 </script>
 

@@ -46,20 +46,8 @@ const actions = {
 
 // mutations
 const mutations = {
-  [types.GET_HISTO_DAY](state) {
-    state.loading = true;
-    state.error = null;
-  },
-
   [types.GET_HISTO_DAY_SUCCESS](state, { data, symbol }) {
-    state.bySymbol = {...state.bySymbol, [symbol]: data};
-    state.loading = false;
-    state.error = null;
-  },
-
-  [types.GET_HISTO_DAY_FAILED](state, error) {
-    state.loading = false;
-    state.error = error;
+    state.bySymbol = { ...state.bySymbol, [symbol]: data };
   }
 };
 
