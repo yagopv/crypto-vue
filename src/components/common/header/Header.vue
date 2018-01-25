@@ -24,7 +24,9 @@
         <router-link to="/about" class="nav-link">About</router-link>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
+    <form
+      v-if="subIsActive('/tickers/coin-list')"
+      class="form-inline my-2 my-lg-0">
       <input
         type="search"
         class="form-control mr-sm-2 text-light bg-dark"

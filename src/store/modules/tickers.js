@@ -56,7 +56,7 @@ const getters = {
       );
     }
   },
-  getSymbol: state => id => state.byId[id] && state.byId[id].symbol,
+  getTickerById: state => id => state.byId[id],
   getTickers: state => state.byId,
   getSelectedTreemap: state => state.selectedTreemap,
   getTreemapData: state => (

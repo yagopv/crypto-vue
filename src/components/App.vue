@@ -52,7 +52,7 @@ body {
 }
 
 body {
-  padding-top: 4rem;
+  padding-top: 3.5rem;
 }
 
 .pointer {

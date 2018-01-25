@@ -55,7 +55,7 @@ export default {
       },
 
       chart: {
-        height: 800
+        height: 700
       },
 
       series: [
