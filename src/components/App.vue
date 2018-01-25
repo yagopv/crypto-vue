@@ -46,6 +46,10 @@ body {
   opacity: 0;
 }
 
+body {
+  padding-top: 4rem;
+}
+
 .pointer {
   cursor: pointer;
 }

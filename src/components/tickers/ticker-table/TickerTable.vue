@@ -1,24 +1,26 @@
 <template>
   <div
+    id="ticker-table"
+    class="container-fluid"
     v-infinite-scroll="addCoins"
     infinite-scroll-distance="600"
     infinite-scroll-throttle-delay="50">
     <div class="row">
       <div class="col">
         <div class="table-responsive">
-          <table class="table table-hover table-dark">
-            <thead class="thead-dark">
-              <ticker-table-head :sort-by="sortBy"></ticker-table-head>
-            </thead>
-            <tbody>
-              <ticker-table-row
-                v-for="ticker in tickers.slice(0, counter)"
-                :key="ticker.id"
-                :ticker="ticker"
-                :select-ticker="selectTicker">
-              </ticker-table-row>
-            </tbody>
-          </table>
+            <table class="table table-hover table-dark">
+              <thead class="thead-dark">
+                <ticker-table-head :sort-by="sortBy"></ticker-table-head>
+              </thead>
+              <tbody>
+                <ticker-table-row
+                  v-for="ticker in tickers.slice(0, counter)"
+                  :key="ticker.id"
+                  :ticker="ticker"
+                  :select-ticker="selectTicker">
+                </ticker-table-row>
+              </tbody>
+            </table>
         </div>
       </div>
     </div>
@@ -62,3 +64,10 @@ export default {
   components: { TickerTableHead, TickerTableRow }
 };
 </script>
+
+<style land="scss">
+#ticker-table {
+  padding-left: 0;
+  padding-right: 0;
+}
+</style>
