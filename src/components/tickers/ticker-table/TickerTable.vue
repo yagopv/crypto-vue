@@ -51,11 +51,13 @@ export default {
         params: { id: ticker.id }
       });
     },
+
     addCoins: function() {
       if (this.counter <= this.tickers.length) {
         this.counter += 100;
       }
     },
+
     sortBy: function({ key, type }) {
       this.counter = 100;
       this.$store.dispatch('sortBy', { key, type });
@@ -65,9 +67,12 @@ export default {
 };
 </script>
 
-<style land="scss">
+<style lang="scss">
 #ticker-table {
   padding-left: 0;
   padding-right: 0;
+  thead {
+    line-height: 3em;
+  }
 }
 </style>

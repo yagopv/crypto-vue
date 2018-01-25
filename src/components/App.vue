@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Header />
+    <Header :input-change="search" />
     <div id="page">
       <transition name="slide-fade">
         <router-view />
@@ -23,6 +23,11 @@ export default {
       isLoading: 'isLoading',
       error: 'getError'
     })
+  },
+  methods: {
+    search: function(searchText) {
+      this.$store.dispatch('searchTickers', searchText);
+    }
   }
 };
 </script>

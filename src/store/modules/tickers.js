@@ -12,17 +12,25 @@ const state = {
   isTreemapVisible: false,
   selectedTreemap: 0,
   sortKey: { rank: 'Number' },
-  sortOrder: 'desc'
+  sortOrder: 'asc',
+  searchValue: ''
 };
 
 // getters
 const getters = {
   getTickersSortBy: function() {
     const prop = Object.keys(state.sortKey)[0];
-    let sorted = null;
     if (state.sortKey[prop] === 'Number') {
-      sorted = orderBy(
-        map(state.byId, ticker => ticker),
+      return orderBy(
+        filter(
+          map(state.byId, ticker => ticker),
+          ticker =>
+            (state.searchValue &&
+              ticker.name
+                .toLowerCase()
+                .includes(state.searchValue.toLowerCase())) ||
+            !state.searchValue
+        ),
         function(ticker) {
           if (ticker[prop]) {
             return parseFloat(ticker[prop]);
@@ -33,13 +41,20 @@ const getters = {
         [state.sortOrder]
       );
     } else {
-      sorted = orderBy(
-        map(state.byId, ticker => ticker),
+      return orderBy(
+        filter(
+          map(state.byId, ticker => ticker),
+          ticker =>
+            (state.searchValue &&
+              ticker.name
+                .toLowerCase()
+                .includes(state.searchValue.toLowerCase())) ||
+            !state.searchValue
+        ),
         [prop],
         [state.sortOrder]
       );
     }
-    return sorted;
   },
   getSymbol: state => id => state.byId[id] && state.byId[id].symbol,
   getTickers: state => state.byId,
@@ -81,6 +96,10 @@ const actions = {
 
   sortBy({ commit }, { key, type }) {
     commit(types.SORT_TICKERS, { key, type });
+  },
+
+  searchTickers({ commit }, searchText) {
+    commit(types.SET_SEARCH, searchText);
   }
 };
 
@@ -105,6 +124,10 @@ const mutations = {
       state.sortKey = { [key]: type };
       state.sortOrder = 'asc';
     }
+  },
+
+  [types.SET_SEARCH](state, searchText) {
+    state.searchValue = searchText;
   }
 };
 

@@ -1,11 +1,18 @@
 <template>
   <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
   <a class="navbar-brand" href="#">Crypto-Vue</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <div id="navbarSupportedContent" class="collapse navbar-collapse">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item" :class="{'active': subIsActive('/tickers/coin-list')}">
         <router-link to="/tickers/coin-list" class="nav-link">Coin list</router-link>
@@ -18,23 +25,33 @@
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      <input
+        type="search"
+        class="form-control mr-sm-2 text-light bg-dark"
+        v-on:input="debounceInput"
+        placeholder="Search"
+        aria-label="Search">
     </form>
   </div>
 </nav>
 </template>
 
 <script>
+import debounce from 'lodash/debounce';
+
 export default {
   name: 'Header',
+  props: ['inputChange'],
   methods: {
-    subIsActive(input) {
+    subIsActive: function(input) {
       const paths = Array.isArray(input) ? input : [input];
       return paths.some(path => {
         return this.$route.path.indexOf(path) === 0; // current path starts with this path string
       });
-    }
+    },
+    debounceInput: debounce(function(event) {
+      this.inputChange(event.target.value);
+    }, 500)
   }
 };
 </script>

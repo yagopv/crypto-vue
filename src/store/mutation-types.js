@@ -9,3 +9,4 @@ export const SELECT_TREEMAP = 'SELECT_TREEMAP_OPTION';
 export const SET_LOADING = 'SET_LOADING';
 export const SET_ERROR = 'SET_ERROR';
 export const SORT_TICKERS = 'SORT_TICKERS';
+export const SET_SEARCH = 'SET_SEARCH';
