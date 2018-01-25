@@ -1,4 +1,3 @@
-import Highcharts from 'highcharts';
 import * as types from '../mutation-types';
 import { getTickers } from '@/api/tickers';
 import mapKeys from 'lodash/mapKeys';

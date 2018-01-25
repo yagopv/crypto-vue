@@ -3,8 +3,6 @@
 </template>
 
 <script>
-import Highcharts from 'highcharts';
-
 export default {
   props: ['tickers', 'height'],
   data: function() {
