@@ -40,8 +40,13 @@ body {
 .slide-fade-enter-active {
   transition: all 0.4s ease;
 }
+
 .slide-fade-enter {
   transform: translateX(20px);
   opacity: 0;
+}
+
+.pointer {
+  cursor: pointer;
 }
 </style>

@@ -1,15 +1,18 @@
 <template>
-  <div>
+  <div
+    v-infinite-scroll="addCoins"
+    infinite-scroll-distance="600"
+    infinite-scroll-throttle-delay="50">
     <div class="row">
       <div class="col">
         <div class="table-responsive">
           <table class="table table-hover table-dark">
             <thead class="thead-dark">
-              <ticker-table-head></ticker-table-head>
+              <ticker-table-head :sort-by="sortBy"></ticker-table-head>
             </thead>
             <tbody>
               <ticker-table-row
-                v-for="ticker in tickers"
+                v-for="ticker in tickers.slice(0, counter)"
                 :key="ticker.id"
                 :ticker="ticker"
                 :select-ticker="selectTicker">
@@ -29,9 +32,14 @@ import TickerTableHead from './TickerTableHead';
 import TickerTableRow from './TickerTableRow';
 
 export default {
+  data: function() {
+    return {
+      counter: 0
+    };
+  },
   computed: {
     ...mapGetters({
-      tickers: 'getTickersByRank'
+      tickers: 'getTickersSortBy'
     })
   },
   methods: {
@@ -40,6 +48,15 @@ export default {
         name: 'TickerDetail',
         params: { id: ticker.id }
       });
+    },
+    addCoins: function() {
+      if (this.counter <= this.tickers.length) {
+        this.counter += 100;
+      }
+    },
+    sortBy: function({ key, type }) {
+      this.counter = 100;
+      this.$store.dispatch('sortBy', { key, type });
     }
   },
   components: { TickerTableHead, TickerTableRow }

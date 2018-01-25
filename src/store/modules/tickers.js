@@ -1,25 +1,46 @@
 import * as types from '../mutation-types';
 import { getTickers } from '@/api/tickers';
+import map from 'lodash/map';
 import mapKeys from 'lodash/mapKeys';
-import flow from 'lodash/fp/flow';
-import map from 'lodash/fp/map';
-import orderBy from 'lodash/fp/orderBy';
+import orderBy from 'lodash/orderBy';
 import inRange from 'lodash/inRange';
-import * as _ from 'lodash';
+import filter from 'lodash/filter';
 
 // Initial state
 const state = {
   byId: {},
   isTreemapVisible: false,
-  selectedTreemap: 0
+  selectedTreemap: 0,
+  sortKey: { rank: 'Number' },
+  sortOrder: 'desc'
 };
 
 // getters
 const getters = {
-  getTickersByRank: state =>
-    flow(map(ticker => ticker), orderBy([{ rank: Number }], ['asc']))(
-      state.byId
-    ),
+  getTickersSortBy: function() {
+    const prop = Object.keys(state.sortKey)[0];
+    let sorted = null;
+    if (state.sortKey[prop] === 'Number') {
+      sorted = orderBy(
+        map(state.byId, ticker => ticker),
+        function(ticker) {
+          if (ticker[prop]) {
+            return parseFloat(ticker[prop]);
+          } else {
+            return 0;
+          }
+        },
+        [state.sortOrder]
+      );
+    } else {
+      sorted = orderBy(
+        map(state.byId, ticker => ticker),
+        [prop],
+        [state.sortOrder]
+      );
+    }
+    return sorted;
+  },
   getSymbol: state => id => state.byId[id] && state.byId[id].symbol,
   getTickers: state => state.byId,
   getSelectedTreemap: state => state.selectedTreemap,
@@ -27,7 +48,7 @@ const getters = {
     minMarketCap = 0,
     maxMarketCap = Number.MAX_SAFE_INTEGER
   ) => {
-    return _.filter(state.byId, ticker => {
+    return filter(state.byId, ticker => {
       const marketCap = parseInt(ticker.market_cap_usd);
       return inRange(marketCap, minMarketCap, maxMarketCap);
     }).map((ticker, index) => ({
@@ -56,6 +77,10 @@ const actions = {
 
   selectTreemap({ commit }, option) {
     commit(types.SELECT_TREEMAP, option);
+  },
+
+  sortBy({ commit }, { key, type }) {
+    commit(types.SORT_TICKERS, { key, type });
   }
 };
 
@@ -71,6 +96,15 @@ const mutations = {
 
   [types.SELECT_TREEMAP](state, option) {
     state.selectedTreemap = option;
+  },
+
+  [types.SORT_TICKERS](state, { key, type }) {
+    if (state.sortKey[key]) {
+      state.sortOrder = state.sortOrder === 'asc' ? 'desc' : 'asc';
+    } else {
+      state.sortKey = { [key]: type };
+      state.sortOrder = 'asc';
+    }
   }
 };
 

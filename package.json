@@ -23,6 +23,7 @@
     "numeral": "^2.0.6",
     "vue": "^2.5.2",
     "vue-highcharts": "0.0.10",
+    "vue-infinite-scroll": "^2.0.2",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"
   },

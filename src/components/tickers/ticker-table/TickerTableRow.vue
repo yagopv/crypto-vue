@@ -1,5 +1,5 @@
 <template>
-  <tr @click="selectTicker(ticker)">
+  <tr class="pointer" @click="selectTicker(ticker)">
     <th scope="row"><b>{{ ticker.rank | rank }}</b></th>
     <td>
       <b>

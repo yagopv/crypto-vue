@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import VueHighcharts from 'vue-highcharts';
+import infiniteScroll from 'vue-infinite-scroll'
 
 import App from './components/App';
 import store from './store';
@@ -29,6 +30,7 @@ fontawesome.library.add(faList, faChartPie, faSync);
 Vue.config.productionTip = false;
 Vue.use(Vuex);
 Vue.use(VueHighcharts, { Highcharts });
+Vue.use(infiniteScroll)
 
 /* eslint-disable no-new */
 new Vue({
