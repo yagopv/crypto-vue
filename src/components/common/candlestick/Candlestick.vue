@@ -4,7 +4,7 @@
 
 <script>
 export default {
-  props: ['ohlc', 'volume'],
+  props: ['ticker', 'ohlc', 'volume'],
   data: function() {
     return {
       options: {}
@@ -66,7 +66,7 @@ export default {
       series: [
         {
           type: 'candlestick',
-          name: 'AAPL',
+          name: this.ticker.name,
           data: this.ohlc
         },
         {

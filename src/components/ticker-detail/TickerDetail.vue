@@ -9,6 +9,7 @@
       <div class="col">
         <div v-if="ohlcAndVolume.ohlc.length">
           <candlestick
+            :ticker="ticker"
             :ohlc="ohlcAndVolume.ohlc"
             :volume="ohlcAndVolume.volume">
           </candlestick>

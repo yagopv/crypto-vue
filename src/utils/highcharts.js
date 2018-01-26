@@ -229,9 +229,8 @@ const treemapOptions = {
         }
       },
       tooltip: {
-        valueDecimals: 2,
-        valuePrefix: '$',
-        valueSuffix: ' USD'
+        valueDecimals: 0,
+        valuePrefix: '$'
         // pointFormatter: function () {}
       },
       levels: [
