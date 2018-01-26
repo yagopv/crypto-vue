@@ -66,8 +66,13 @@ export default {
       series: [
         {
           type: 'candlestick',
-          name: this.ticker.name,
-          data: this.ohlc
+          name: this.ticker.symbol,
+          data: this.ohlc,
+          tooltip: {
+            valueDecimals: 2,
+            valuePrefix: '$'
+            // pointFormatter: function () {}
+          }
         },
         {
           type: 'column',
