@@ -3,20 +3,22 @@
 </template>
 
 <script>
+import { treemapOptions } from '@/utils/highcharts';
+
 export default {
   props: ['tickers', 'height'],
   data: function() {
     return {
-      options: {}
+      options: treemapOptions
     };
   },
   watch: {
-    tickers: function(val) {
-      console.log(val);
+    tickers: function(tickers) {
       this.$refs.highcharts.chart.update({
         series: [
           {
-            data: val
+            animationLimit: tickers.length,
+            data: tickers
           }
         ],
         chart: {
@@ -24,52 +26,6 @@ export default {
         }
       });
     }
-  },
-  mounted: function() {
-    this.options = {
-      series: [
-        {
-          type: 'treemap',
-          layoutAlgorithm: 'squarified',
-          allowDrillToNode: true,
-          animationLimit: this.tickers.length,
-          layoutStartingDirection: 'horizontal',
-          turboThreshold: 2000,
-          colorByPoint: true,
-          cursor: 'pointer',
-          levelIsConstant: false,
-          point: {
-            events: {
-              click: event => console.log(event)
-            }
-          },
-          tooltip: {
-            valueDecimals: 2,
-            valuePrefix: '$',
-            valueSuffix: ' USD'
-            // pointFormatter: function () {}
-          },
-          levels: [
-            {
-              level: 1,
-              dataLabels: {
-                enabled: true,
-                color: '#FFF',
-                font: 'bold 26px "Open Sans", sans-serif'
-              },
-              borderWidth: 3
-            }
-          ],
-          data: this.tickers
-        }
-      ],
-      title: {
-        text: ''
-      },
-      chart: {
-        height: this.height
-      }
-    };
   }
 };
 </script>

@@ -1,7 +1,6 @@
-// Load the fonts
 import Highcharts from 'highcharts';
 
-export default function() {
+const loadTheme = () => {
   Highcharts.theme = {
     colors: [
       '#2b908f',
@@ -211,4 +210,50 @@ export default function() {
 
   // Apply the theme
   Highcharts.setOptions(Highcharts.theme);
-}
+};
+
+const treemapOptions = {
+  series: [
+    {
+      type: 'treemap',
+      layoutAlgorithm: 'squarified',
+      allowDrillToNode: true,
+      layoutStartingDirection: 'horizontal',
+      turboThreshold: 2000,
+      colorByPoint: true,
+      cursor: 'pointer',
+      levelIsConstant: false,
+      point: {
+        events: {
+          click: event => console.log(event)
+        }
+      },
+      tooltip: {
+        valueDecimals: 2,
+        valuePrefix: '$',
+        valueSuffix: ' USD'
+        // pointFormatter: function () {}
+      },
+      levels: [
+        {
+          level: 1,
+          dataLabels: {
+            enabled: true,
+            color: '#FFF',
+            font: 'bold 26px "Open Sans", sans-serif'
+          },
+          borderWidth: 3
+        }
+      ],
+      data: []
+    }
+  ],
+  title: {
+    text: ''
+  },
+  chart: {
+    height: 900
+  }
+};
+
+export { loadTheme, treemapOptions };

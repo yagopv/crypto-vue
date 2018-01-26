@@ -13,9 +13,9 @@
         {{ ticker.symbol }}
       </b>
     </td>
-    <td>{{ ticker.price_usd | format('$ 0.[00]') }}</td>
-    <td>{{ ticker.market_cap_usd | format('$ 0.[00]a') }}</td>
-    <td>{{ ticker.available_supply | format('$ 0.[00]a') }}</td>
+    <td>{{ ticker.price_usd | format('$0.[00]') }}</td>
+    <td>{{ ticker.market_cap_usd | format('$0.[00]a') }}</td>
+    <td>{{ ticker.available_supply | format('$0.[00]a') }}</td>
     <td>{{ ticker.total_supply | format('0.[00]a') }}</td>
     <td>
       <span :class="colorizePercentChange(ticker.percent_change_1h)">
@@ -36,26 +36,14 @@
 </template>
 
 <script>
-import numeral from 'numeral';
+import { format, percentage, uppercase } from '@/utils/filters';
+import { colorizePercentChange, getImageUrl } from '@/utils/helpers';
 
 export default {
   name: 'TickerTableRow',
   props: ['ticker', 'selectTicker'],
-  methods: {
-    colorizePercentChange: change =>
-      change > 0 ? 'text-success' : 'text-danger',
-    getImageUrl: ticker => {
-      return ticker.meta && `http://cryptocompare.com${ticker.meta.ImageUrl}`;
-    }
-  },
-  filters: {
-    rank: value => `# ${value}`,
-    format: (value, format) => {
-      return numeral(value).format(format);
-    },
-    percentage: value => `${value}%`,
-    uppercase: value => value.toUpperCase()
-  }
+  methods: { colorizePercentChange, getImageUrl },
+  filters: { format, percentage, uppercase }
 };
 </script>
 

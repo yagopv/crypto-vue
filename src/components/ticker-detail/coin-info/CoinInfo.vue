@@ -45,26 +45,14 @@
 </template>
 
 <script>
-import numeral from 'numeral';
+import { format, percentage, uppercase } from '@/utils/filters';
+import { colorizePercentChange, getImageUrl } from '@/utils/helpers';
 
 export default {
   name: 'CoinInfo',
   props: ['ticker'],
-  methods: {
-    colorizePercentChange: change =>
-      change > 0 ? 'text-success' : 'text-danger',
-    getImageUrl: ticker => {
-      return ticker.meta && `http://cryptocompare.com${ticker.meta.ImageUrl}`;
-    }
-  },
-  filters: {
-    rank: value => `# ${value}`,
-    format: (value, format) => {
-      return numeral(value).format(format);
-    },
-    percentage: value => `${value}%`,
-    uppercase: value => value.toUpperCase()
-  }
+  methods: { colorizePercentChange, getImageUrl },
+  filters: { format, percentage, uppercase }
 };
 </script>
 
