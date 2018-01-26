@@ -4,7 +4,7 @@
       <tbody>
         <tr class="pointer">
           <td>
-            <img class="img-responsive" :src="getImageUrl(ticker)" />
+            <img class="img-fluid" :src="getImageUrl(ticker)" />
           </td>
           <td>
             <b>
@@ -69,7 +69,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.img-responsive {
+.img-fluid {
   height: 24px;
+  margin-bottom: 3px;
 }
 </style>

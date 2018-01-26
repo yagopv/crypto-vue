@@ -16,6 +16,7 @@
     "@fortawesome/vue-fontawesome": "0.0.22",
     "axios": "^0.17.1",
     "bootstrap": "^4.0.0-beta.3",
+    "cachios": "^1.0.8",
     "ccxt": "^1.10.668",
     "highcharts": "^6.0.4",
     "lodash": "^4.17.4",

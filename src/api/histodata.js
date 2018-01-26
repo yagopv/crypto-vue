@@ -1,8 +1,9 @@
-import axios from 'axios';
+import cachios from 'cachios';
 
 const getHistoDay = async symbol => {
-  const response = await axios.get(
-    `https://min-api.cryptocompare.com/data/histoday?fsym=${symbol}&tsym=USD&e=CCCAGG&allData=true`
+  const response = await cachios.get(
+    `https://min-api.cryptocompare.com/data/histoday?fsym=${symbol}&tsym=USD&e=CCCAGG&allData=true`,
+    { ttl: 300 }
   );
   return response;
 };

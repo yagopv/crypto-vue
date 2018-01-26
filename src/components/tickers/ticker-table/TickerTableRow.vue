@@ -1,7 +1,7 @@
 <template>
   <tr class="pointer" @click="selectTicker(ticker)">
     <th scope="row">
-      <img class="img-responsive" :src="getImageUrl(ticker)" />
+      <img class="img-fluid" :src="getImageUrl(ticker)" />
     </th>
     <td>
       <b>
@@ -60,7 +60,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.img-responsive {
+.img-fluid {
   height: 24px;
+  margin-bottom: 3px;
 }
 </style>

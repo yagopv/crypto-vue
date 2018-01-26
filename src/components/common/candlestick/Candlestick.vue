@@ -57,7 +57,12 @@ export default {
       chart: {
         height: 700
       },
-
+      plotOptions: {
+        candlestick: {
+          color: '#dc3545',
+          upColor: '#28a745'
+        }
+      },
       series: [
         {
           type: 'candlestick',
@@ -75,7 +80,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss">
-
-</style>
