@@ -9,8 +9,6 @@ import filter from 'lodash/filter';
 // Initial state
 const state = {
   byId: {},
-  isTreemapVisible: false,
-  selectedTreemap: 0,
   sortKey: { rank: 'Number' },
   sortOrder: 'asc',
   searchValue: ''
@@ -58,7 +56,6 @@ const getters = {
   },
   getTickerById: state => id => state.byId[id],
   getTickers: state => state.byId,
-  getSelectedTreemap: state => state.selectedTreemap,
   getTreemapData: state => (
     minMarketCap = 0,
     maxMarketCap = Number.MAX_SAFE_INTEGER
@@ -101,14 +98,6 @@ const actions = {
     }
   },
 
-  toggleTreeVisibility({ commit }, isVisible) {
-    commit(types.TOGGLE_TREEMAP_VISIBILITY, isVisible);
-  },
-
-  selectTreemap({ commit }, option) {
-    commit(types.SELECT_TREEMAP, option);
-  },
-
   sortBy({ commit }, { key, type }) {
     commit(types.SORT_TICKERS, { key, type });
   },
@@ -122,14 +111,6 @@ const actions = {
 const mutations = {
   [types.GET_TICKERS_SUCCESS](state, tickers) {
     state.byId = mapKeys(tickers, ticker => ticker.id);
-  },
-
-  [types.TOGGLE_TREEMAP_VISIBILITY](state, isVisible) {
-    state.isTreemapVisible = isVisible;
-  },
-
-  [types.SELECT_TREEMAP](state, option) {
-    state.selectedTreemap = option;
   },
 
   [types.SORT_TICKERS](state, { key, type }) {

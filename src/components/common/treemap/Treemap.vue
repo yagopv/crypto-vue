@@ -10,6 +10,21 @@ export default {
       options: {}
     };
   },
+  watch: {
+    tickers: function(val) {
+      console.log(val);
+      this.$refs.highcharts.chart.update({
+        series: [
+          {
+            data: val
+          }
+        ],
+        chart: {
+          height: this.height
+        }
+      });
+    }
+  },
   mounted: function() {
     this.options = {
       series: [
