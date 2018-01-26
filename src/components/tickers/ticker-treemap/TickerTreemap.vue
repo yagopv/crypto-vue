@@ -66,11 +66,7 @@ export default {
     })
   },
   methods: {
-    selectTreemap: function(option) {
-      this.$store.dispatch('selectTreemap', option);
-    },
     update: function(selectedTreemap) {
-      this.selectTreemap(selectedTreemap);
       this.selectedTreemap = selectedTreemap;
       switch (selectedTreemap) {
         case 0:
@@ -95,6 +91,9 @@ export default {
           break;
       }
     }
+  },
+  created: function() {
+    this.update(0);
   },
   components: { Treemap }
 };

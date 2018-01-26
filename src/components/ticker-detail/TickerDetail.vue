@@ -6,6 +6,37 @@
       </div>
     </div>
     <div class="row">
+      <div class="col text-center">
+        <div class="btn-group" role="group">
+          <button
+            type="button"
+            class="btn btn-dark">
+            Monthy
+          </button>
+          <button
+            type="button"
+            class="btn btn-dark">
+            Weekly
+          </button>
+          <button
+            type="button"
+            class="btn btn-dark">
+            Daily
+          </button>
+          <button
+            type="button"
+            class="btn btn-dark">
+            4 Hour
+          </button>
+          <button
+            type="button"
+            class="btn btn-dark">
+            Hourly
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="row">
       <div class="col">
         <div v-if="ohlcAndVolume.ohlc.length">
           <candlestick

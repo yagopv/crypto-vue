@@ -13,12 +13,17 @@ export default {
     };
   },
   watch: {
-    tickers: function(tickers) {
+    tickers: function(newTickers) {
+      this.updateTree(newTickers);
+    }
+  },
+  methods: {
+    updateTree: function(tickers) {
       this.$refs.highcharts.chart.update({
         series: [
           {
-            animationLimit: tickers.length,
-            data: tickers
+            animationLimit: this.tickers.length,
+            data: this.tickers
           }
         ],
         chart: {
@@ -26,6 +31,9 @@ export default {
         }
       });
     }
+  },
+  mounted: function() {
+    this.updateTree(this.tickers);
   }
 };
 </script>
