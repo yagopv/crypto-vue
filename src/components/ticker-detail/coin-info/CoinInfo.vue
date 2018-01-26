@@ -4,6 +4,9 @@
       <tbody>
         <tr class="pointer">
           <td>
+            <img class="img-responsive" :src="getImageUrl(ticker)" />
+          </td>
+          <td>
             <b>
               {{ ticker.name | uppercase }}
             </b>
@@ -49,7 +52,10 @@ export default {
   props: ['ticker'],
   methods: {
     colorizePercentChange: change =>
-      change > 0 ? 'text-success' : 'text-danger'
+      change > 0 ? 'text-success' : 'text-danger',
+    getImageUrl: ticker => {
+      return ticker.meta && `http://cryptocompare.com${ticker.meta.ImageUrl}`;
+    }
   },
   filters: {
     rank: value => `# ${value}`,
@@ -61,3 +67,9 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.img-responsive {
+  height: 24px;
+}
+</style>

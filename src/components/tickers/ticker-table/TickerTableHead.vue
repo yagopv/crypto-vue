@@ -1,6 +1,6 @@
 <template>
     <tr>
-      <th class="pointer" scope="col" @click="sortBy({ key: 'rank', type: 'Number'})"></th>
+      <th class="pointer" scope="col"></th>
       <th class="pointer" scope="col" @click="sortBy({ key: 'name', type: 'String'})"><b>Coin name</b></th>
       <th class="pointer" scope="col" @click="sortBy({ key: 'symbol', type: 'String'})"><b>Symbol</b></th>
       <th class="pointer" scope="col" @click="sortBy({ key: 'price_usd', type: 'Number'})"><b>Price</b></th>
