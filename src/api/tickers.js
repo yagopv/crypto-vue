@@ -1,8 +1,9 @@
 import cachios from 'cachios';
+import * as constants from '@/utils/constants';
 
 const getTickers = async () => {
   const response = await cachios.get(
-    'https://api.coinmarketcap.com/v1/ticker/?limit=0',
+    `${constants.COINMARKETCAP_ROOT_URL}/ticker/?limit=0`,
     { ttl: 300 }
   );
   return response;
@@ -10,7 +11,7 @@ const getTickers = async () => {
 
 const getCoinList = async () => {
   const response = await cachios.get(
-    'https://min-api.cryptocompare.com/data/all/coinlist',
+    `${constants.CRYPTOCOMPARE_ROOT_URL}/data/all/coinlist`,
     { ttl: 86400 }
   );
   return response;
