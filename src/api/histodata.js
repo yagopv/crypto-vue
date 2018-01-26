@@ -10,22 +10,14 @@ const getHistoData = async (symbol, interval) => {
 
 function getBaseUrl(symbol, interval) {
   switch (interval) {
-    case constants.TickerDetailIntervals.MONTHLY:
+    case constants.TickerDetailIntervals.MINUTE:
       return `${
         constants.CRYPTOCOMPARE_ROOT_URL
-      }/data/histoday?fsym=${symbol}&tsym=USD&e=CCCAGG&aggregate=30`;
-    case constants.TickerDetailIntervals.WEEKLY:
-      return `${
-        constants.CRYPTOCOMPARE_ROOT_URL
-      }/data/histoday?fsym=${symbol}&tsym=USD&e=CCCAGG&aggregate=7`;
-    case constants.TickerDetailIntervals.HOURLY:
+      }/data/histominute?fsym=${symbol}&tsym=USD&e=CCCAGG`;
+    case constants.TickerDetailIntervals.HOUR:
       return `${
         constants.CRYPTOCOMPARE_ROOT_URL
       }/data/histohour?fsym=${symbol}&tsym=USD&e=CCCAGG`;
-    case constants.TickerDetailIntervals.HOURLY_4:
-      return `${
-        constants.CRYPTOCOMPARE_ROOT_URL
-      }/data/histohour?fsym=${symbol}&tsym=USD&e=CCCAGG&aggregate=4`;
     default:
       return `${
         constants.CRYPTOCOMPARE_ROOT_URL

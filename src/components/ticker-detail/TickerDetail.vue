@@ -26,7 +26,7 @@ export default {
   name: 'TickerDetail',
   data: function() {
     return {
-      interval: constants.TickerDetailIntervals.DAILY
+      interval: constants.TickerDetailIntervals.DAY
     };
   },
   computed: {
