@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-  <a class="navbar-brand" href="#">Crypto-Vue</a>
+  <router-link to="/tickers/coin-list" class="navbar-brand">Crypto-Vue</router-link>
   <button
     class="navbar-toggler"
     type="button"

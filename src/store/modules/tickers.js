@@ -1,5 +1,5 @@
 import * as types from '../mutation-types';
-import { getTickers } from '@/api/tickers';
+import { getTickers, getCoinList } from '@/api/tickers';
 import map from 'lodash/map';
 import mapKeys from 'lodash/mapKeys';
 import orderBy from 'lodash/orderBy';
@@ -79,8 +79,23 @@ const actions = {
   async getTickers({ commit }) {
     try {
       commit(types.GET_TICKERS);
-      const tickers = await getTickers();
-      commit(types.GET_TICKERS_SUCCESS, tickers.data);
+      const tickers = getTickers();
+      const coinList = getCoinList();
+      const tickersResult = await tickers;
+      const coinListResult = await coinList;
+      if (
+        tickersResult.data &&
+        coinListResult.data &&
+        coinListResult.data['Data']
+      ) {
+        tickersResult.data.forEach(ticker => {
+          ticker.meta = coinListResult.data['Data'][ticker.symbol];
+          if (ticker.symbol === 'MIOTA') {
+            ticker.meta = coinListResult.data['Data']['IOT'];
+          }
+        });
+      }
+      commit(types.GET_TICKERS_SUCCESS, tickersResult.data);
     } catch (error) {
       commit(types.GET_TICKERS_FAILED, error);
     }

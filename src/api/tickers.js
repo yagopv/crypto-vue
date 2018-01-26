@@ -7,4 +7,11 @@ const getTickers = async () => {
   return response;
 };
 
-export { getTickers };
+const getCoinList = async () => {
+  const response = await axios.get(
+    'https://min-api.cryptocompare.com/data/all/coinlist'
+  );
+  return response;
+};
+
+export { getTickers, getCoinList };

@@ -1,6 +1,8 @@
 <template>
   <tr class="pointer" @click="selectTicker(ticker)">
-    <th scope="row"><b>{{ ticker.rank | rank }}</b></th>
+    <th scope="row">
+      <img class="img-responsive" :src="getImageUrl(ticker)" />
+    </th>
     <td>
       <b>
         {{ ticker.name | uppercase }}
@@ -41,7 +43,10 @@ export default {
   props: ['ticker', 'selectTicker'],
   methods: {
     colorizePercentChange: change =>
-      change > 0 ? 'text-success' : 'text-danger'
+      change > 0 ? 'text-success' : 'text-danger',
+    getImageUrl: ticker => {
+      return ticker.meta && `http://cryptocompare.com${ticker.meta.ImageUrl}`;
+    }
   },
   filters: {
     rank: value => `# ${value}`,
@@ -53,3 +58,9 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.img-responsive {
+  height: 24px;
+}
+</style>
