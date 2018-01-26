@@ -6,44 +6,9 @@
       </div>
     </div>
     <div class="row">
-      <div class="col text-center">
-        <div class="btn-group" role="group">
-          <button
-            type="button"
-            class="btn btn-dark">
-            Monthy
-          </button>
-          <button
-            type="button"
-            class="btn btn-dark">
-            Weekly
-          </button>
-          <button
-            type="button"
-            class="btn btn-dark">
-            Daily
-          </button>
-          <button
-            type="button"
-            class="btn btn-dark">
-            4 Hour
-          </button>
-          <button
-            type="button"
-            class="btn btn-dark">
-            Hourly
-          </button>
-        </div>
-      </div>
-    </div>
-    <div class="row">
       <div class="col">
         <div v-if="ohlcAndVolume.ohlc.length">
-          <candlestick
-            :ticker="ticker"
-            :ohlc="ohlcAndVolume.ohlc"
-            :volume="ohlcAndVolume.volume">
-          </candlestick>
+          <candlestick :ticker="ticker" :ohlcData="ohlcAndVolume"></candlestick>
         </div>
       </div>
     </div>
@@ -53,11 +18,17 @@
 <script>
 import Candlestick from '@/components/common/candlestick/Candlestick';
 import CoinInfo from './coin-info/CoinInfo';
+import * as constants from '@/utils/constants';
 
 import { mapGetters } from 'vuex';
 
 export default {
   name: 'TickerDetail',
+  data: function() {
+    return {
+      interval: constants.TickerDetailIntervals.DAILY
+    };
+  },
   computed: {
     ...mapGetters({
       tickers: 'tickers'
@@ -77,7 +48,16 @@ export default {
     }
   },
   created() {
-    this.$store.dispatch('getHistoDay', this.$route.params.id);
+    this.getData(this.interval);
+  },
+  methods: {
+    getData: function(interval) {
+      this.interval = interval;
+      this.$store.dispatch('getHistoData', {
+        id: this.$route.params.id,
+        interval
+      });
+    }
   },
   components: { Candlestick, CoinInfo }
 };

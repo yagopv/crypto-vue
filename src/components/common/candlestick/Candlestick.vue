@@ -3,85 +3,43 @@
 </template>
 
 <script>
+import { candlestickOptions } from '@/utils/highcharts';
+
 export default {
-  props: ['ticker', 'ohlc', 'volume'],
+  props: ['ticker', 'ohlcData'],
   data: function() {
     return {
-      options: {}
+      options: candlestickOptions
     };
   },
+  watch: {
+    ohlcData: function(newOhlcData) {
+      this.updateCandlestick(newOhlcData);
+    }
+  },
+  methods: {
+    updateCandlestick: function(ohlcData) {
+      this.$refs.highstocks.chart.update(
+        {
+          series: [
+            {
+              name: this.ticker.symbol,
+              data: ohlcData.ohlc
+            },
+            {
+              type: 'column',
+              name: 'Volume',
+              data: ohlcData.volume,
+              yAxis: 1
+            }
+          ]
+        },
+        true
+      );
+    }
+  },
   mounted: function() {
-    this.options = {
-      rangeSelector: {
-        selected: 1
-      },
-
-      title: {
-        text: ''
-      },
-
-      yAxis: [
-        {
-          labels: {
-            align: 'right',
-            x: -3
-          },
-          title: {
-            text: 'OHLC'
-          },
-          height: '60%',
-          lineWidth: 2,
-          resize: {
-            enabled: true
-          }
-        },
-        {
-          labels: {
-            align: 'right',
-            x: -3
-          },
-          title: {
-            text: 'Volume'
-          },
-          top: '65%',
-          height: '35%',
-          offset: 0,
-          lineWidth: 2
-        }
-      ],
-
-      tooltip: {
-        split: true
-      },
-
-      chart: {
-        height: 700
-      },
-      plotOptions: {
-        candlestick: {
-          color: '#dc3545',
-          upColor: '#28a745'
-        }
-      },
-      series: [
-        {
-          type: 'candlestick',
-          name: this.ticker.symbol,
-          data: this.ohlc,
-          tooltip: {
-            valueDecimals: 2,
-            valuePrefix: '$'
-            // pointFormatter: function () {}
-          }
-        },
-        {
-          type: 'column',
-          name: 'Volume',
-          data: this.volume,
-          yAxis: 1
-        }
-      ]
-    };
+    this.updateCandlestick(this.ohlcData);
   }
 };
 </script>

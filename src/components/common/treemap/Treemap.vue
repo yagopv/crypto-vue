@@ -19,17 +19,20 @@ export default {
   },
   methods: {
     updateTree: function(tickers) {
-      this.$refs.highcharts.chart.update({
-        series: [
-          {
-            animationLimit: this.tickers.length,
-            data: this.tickers
+      this.$refs.highcharts.chart.update(
+        {
+          series: [
+            {
+              animationLimit: this.tickers.length,
+              data: this.tickers
+            }
+          ],
+          chart: {
+            height: this.height
           }
-        ],
-        chart: {
-          height: this.height
-        }
-      });
+        },
+        true
+      );
     }
   },
   mounted: function() {

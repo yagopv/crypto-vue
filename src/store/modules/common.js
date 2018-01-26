@@ -47,17 +47,17 @@ const mutations = {
     state.error = error;
   },
 
-  [types.GET_HISTO_DAY](state) {
+  [types.GET_HISTO_DATA](state) {
     state.loading = true;
     state.error = null;
   },
 
-  [types.GET_HISTO_DAY_SUCCESS](state, { data, symbol }) {
+  [types.GET_HISTO_DATA_SUCCESS](state, { data, symbol }) {
     state.loading = false;
     state.error = null;
   },
 
-  [types.GET_HISTO_DAY_FAILED](state, error) {
+  [types.GET_HISTO_DATA_FAILED](state, error) {
     state.loading = false;
     state.error = error;
   }

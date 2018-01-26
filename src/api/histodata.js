@@ -1,14 +1,36 @@
 import cachios from 'cachios';
 import * as constants from '@/utils/constants';
 
-const getHistoDay = async symbol => {
-  const response = await cachios.get(
-    `${
-      constants.CRYPTOCOMPARE_ROOT_URL
-    }/data/histoday?fsym=${symbol}&tsym=USD&e=CCCAGG&allData=true`,
-    { ttl: 300 }
-  );
+const getHistoData = async (symbol, interval) => {
+  const response = await cachios.get(getBaseUrl(symbol, interval), {
+    ttl: 300
+  });
   return response;
 };
 
-export { getHistoDay };
+function getBaseUrl(symbol, interval) {
+  switch (interval) {
+    case constants.TickerDetailIntervals.MONTHLY:
+      return `${
+        constants.CRYPTOCOMPARE_ROOT_URL
+      }/data/histoday?fsym=${symbol}&tsym=USD&e=CCCAGG&allData=true&aggregate=30`;
+    case constants.TickerDetailIntervals.WEEKLY:
+      return `${
+        constants.CRYPTOCOMPARE_ROOT_URL
+      }/data/histoday?fsym=${symbol}&tsym=USD&e=CCCAGG&allData=true&aggregate=7`;
+    case constants.TickerDetailIntervals.HOURLY:
+      return `${
+        constants.CRYPTOCOMPARE_ROOT_URL
+      }/data/histohour?fsym=${symbol}&tsym=USD&e=CCCAGG&allData=true`;
+    case constants.TickerDetailIntervals.HOURLY_4:
+      return `${
+        constants.CRYPTOCOMPARE_ROOT_URL
+      }/data/histohour?fsym=${symbol}&tsym=USD&e=CCCAGG&allData=true&aggregate=4`;
+    default:
+      return `${
+        constants.CRYPTOCOMPARE_ROOT_URL
+      }/data/histoday?fsym=${symbol}&tsym=USD&e=CCCAGG&allData=true`;
+  }
+}
+
+export { getHistoData };

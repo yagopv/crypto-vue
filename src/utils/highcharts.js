@@ -255,4 +255,76 @@ const treemapOptions = {
   }
 };
 
-export { loadTheme, treemapOptions };
+const candlestickOptions = {
+  rangeSelector: {
+    selected: 1
+  },
+
+  title: {
+    text: ''
+  },
+
+  yAxis: [
+    {
+      labels: {
+        align: 'right',
+        x: -3
+      },
+      title: {
+        text: 'OHLC'
+      },
+      height: '60%',
+      lineWidth: 2,
+      resize: {
+        enabled: true
+      }
+    },
+    {
+      labels: {
+        align: 'right',
+        x: -3
+      },
+      title: {
+        text: 'Volume'
+      },
+      top: '65%',
+      height: '35%',
+      offset: 0,
+      lineWidth: 2
+    }
+  ],
+
+  tooltip: {
+    split: true
+  },
+
+  chart: {
+    height: 700
+  },
+  plotOptions: {
+    candlestick: {
+      color: '#dc3545',
+      upColor: '#28a745'
+    }
+  },
+  series: [
+    {
+      type: 'candlestick',
+      name: '',
+      data: [],
+      tooltip: {
+        valueDecimals: 2,
+        valuePrefix: '$'
+        // pointFormatter: function () {}
+      }
+    },
+    {
+      type: 'column',
+      name: 'Volume',
+      data: [],
+      yAxis: 1
+    }
+  ]
+};
+
+export { loadTheme, treemapOptions, candlestickOptions };
