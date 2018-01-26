@@ -5,6 +5,7 @@ import TickerTable from '@/components/tickers/ticker-table/TickerTable';
 import TickerTreeMap from '@/components/tickers/ticker-treemap/TickerTreeMap';
 import TickerDetail from '@/components/ticker-detail/TickerDetail';
 import About from '@/components/about/About';
+import NotFound from '@/components/not-found/NotFound';
 
 Vue.use(Router);
 
@@ -43,6 +44,12 @@ const router = new Router({
       name: 'About',
       component: About,
       meta: { title: 'About' }
+    },
+    {
+      path: '*',
+      name: 'NotFound',
+      component: NotFound,
+      meta: { title: 'Page not found' }
     }
   ]
 });

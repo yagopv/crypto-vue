@@ -13,19 +13,19 @@ function getBaseUrl(symbol, interval) {
     case constants.TickerDetailIntervals.MONTHLY:
       return `${
         constants.CRYPTOCOMPARE_ROOT_URL
-      }/data/histoday?fsym=${symbol}&tsym=USD&e=CCCAGG&allData=true&aggregate=30`;
+      }/data/histoday?fsym=${symbol}&tsym=USD&e=CCCAGG&aggregate=30`;
     case constants.TickerDetailIntervals.WEEKLY:
       return `${
         constants.CRYPTOCOMPARE_ROOT_URL
-      }/data/histoday?fsym=${symbol}&tsym=USD&e=CCCAGG&allData=true&aggregate=7`;
+      }/data/histoday?fsym=${symbol}&tsym=USD&e=CCCAGG&aggregate=7`;
     case constants.TickerDetailIntervals.HOURLY:
       return `${
         constants.CRYPTOCOMPARE_ROOT_URL
-      }/data/histohour?fsym=${symbol}&tsym=USD&e=CCCAGG&allData=true`;
+      }/data/histohour?fsym=${symbol}&tsym=USD&e=CCCAGG`;
     case constants.TickerDetailIntervals.HOURLY_4:
       return `${
         constants.CRYPTOCOMPARE_ROOT_URL
-      }/data/histohour?fsym=${symbol}&tsym=USD&e=CCCAGG&allData=true&aggregate=4`;
+      }/data/histohour?fsym=${symbol}&tsym=USD&e=CCCAGG&aggregate=4`;
     default:
       return `${
         constants.CRYPTOCOMPARE_ROOT_URL
