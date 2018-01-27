@@ -24,11 +24,6 @@ import { mapGetters } from 'vuex';
 
 export default {
   name: 'TickerDetail',
-  data: function() {
-    return {
-      interval: constants.TickerDetailIntervals.DAY
-    };
-  },
   computed: {
     ...mapGetters({
       tickers: 'tickers'
@@ -48,16 +43,12 @@ export default {
     }
   },
   created() {
-    this.getData(this.interval);
-  },
-  methods: {
-    getData: function(interval) {
-      this.interval = interval;
-      this.$store.dispatch('getHistoData', {
-        id: this.$route.params.id,
-        interval
-      });
-    }
+    const interval =
+      this.$route.query.interval || constants.TickerDetailIntervals.DAY;
+    this.$store.dispatch('getHistoData', {
+      id: this.$route.params.id,
+      interval
+    });
   },
   components: { Candlestick, CoinInfo }
 };
