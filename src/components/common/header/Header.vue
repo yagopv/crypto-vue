@@ -8,11 +8,12 @@
     data-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent"
     aria-expanded="false"
-    aria-label="Toggle navigation">
+    aria-label="Toggle navigation"
+    @click="toggleNavbar">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div id="navbarSupportedContent" class="collapse navbar-collapse">
+  <div id="navbarSupportedContent" class="navbar-collapse" :class="{collapse: navBarCollapsed}">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item" :class="{'active': subIsActive('/tickers/coin-list')}">
         <router-link to="/tickers/coin-list" class="nav-link">Coin list</router-link>
@@ -44,6 +45,11 @@ import debounce from 'lodash/debounce';
 export default {
   name: 'Header',
   props: ['inputChange'],
+  data: function() {
+    return {
+      navBarCollapsed: true
+    };
+  },
   methods: {
     subIsActive: function(input) {
       const paths = Array.isArray(input) ? input : [input];
@@ -53,7 +59,10 @@ export default {
     },
     debounceInput: debounce(function(event) {
       this.inputChange(event.target.value);
-    }, 500)
+    }, 500),
+    toggleNavbar: function() {
+      this.navBarCollapsed = !this.navBarCollapsed;
+    }
   }
 };
 </script>
