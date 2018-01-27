@@ -80,6 +80,12 @@ const actions = {
       const coinList = getCoinList();
       const tickersResult = await tickers;
       const coinListResult = await coinList;
+
+      if (coinListResult.data['Response'] === 'Error') {
+        console.log(coinListResult);
+        throw new Error(coinListResult.data['ErrorsSummary']);
+      }
+
       if (
         tickersResult.data &&
         coinListResult.data &&

@@ -1,12 +1,12 @@
 <template>
   <div id="ticker-detail" class="container-fluid">
     <div class="row">
-      <div class="col">
+      <div class="col pl-0 pr-0">
         <coin-info v-if="ticker" :ticker="ticker"></coin-info>
       </div>
     </div>
     <div class="row">
-      <div class="col">
+      <div class="col pl-0 pr-0">
         <div v-if="ohlcAndVolume.ohlc.length">
           <candlestick :ticker="ticker" :ohlcData="ohlcAndVolume"></candlestick>
         </div>
@@ -53,10 +53,3 @@ export default {
   components: { Candlestick, CoinInfo }
 };
 </script>
-
-<style lang="scss" scoped>
-.col {
-  padding-left: 0;
-  padding-right: 0;
-}
-</style>

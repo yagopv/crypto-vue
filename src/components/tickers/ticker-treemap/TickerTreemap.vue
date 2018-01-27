@@ -35,7 +35,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col">
+      <div class="col pl-0 pr-0">
         <treemap
           :tickers="treemapData(min, max)"
           :height="height">

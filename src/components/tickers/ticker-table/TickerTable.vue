@@ -1,7 +1,7 @@
 <template>
   <div
     id="ticker-table"
-    class="container-fluid"
+    class="container-fluid pl-0 pr-0"
     v-infinite-scroll="addCoins"
     infinite-scroll-distance="600"
     infinite-scroll-throttle-delay="50">
@@ -69,8 +69,6 @@ export default {
 
 <style lang="scss">
 #ticker-table {
-  padding-left: 0;
-  padding-right: 0;
   thead {
     line-height: 3em;
   }

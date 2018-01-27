@@ -1,6 +1,13 @@
 <template>
   <div id="app">
     <Header :input-change="search" />
+    <alert
+      v-if="error"
+      title="Oooops!!"
+      :error="error"
+      :dismiss="dismiss"
+      type="danger">
+    </alert>
     <div id="page">
       <transition name="slide-fade">
         <router-view />
@@ -13,11 +20,12 @@
 <script>
 import Header from '@/components/common/header/Header';
 import Loader from '@/components/common/loader/Loader';
+import Alert from '@/components/common/alert/Alert';
+
 import { mapGetters } from 'vuex';
 
 export default {
   name: 'app',
-  components: { Header, Loader },
   computed: {
     ...mapGetters({
       isLoading: 'isLoading',
@@ -27,8 +35,12 @@ export default {
   methods: {
     search: function(searchText) {
       this.$store.dispatch('searchTickers', searchText);
+    },
+    dismiss: function() {
+      this.$store.dispatch('setError', null);
     }
-  }
+  },
+  components: { Header, Loader, Alert }
 };
 </script>
 

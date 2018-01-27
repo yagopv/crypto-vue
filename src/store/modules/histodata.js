@@ -37,6 +37,9 @@ const actions = {
       const symbol = rootState.tickers.byId[id].symbol;
       commit(types.GET_HISTO_DATA);
       const { data } = await getHistoData(symbol, interval);
+      if (data['Response'] === 'Error') {
+        throw new Error(data['ErrorsSummary']);
+      }
       commit(types.GET_HISTO_DATA_SUCCESS, { data, symbol });
     } catch (error) {
       commit(types.GET_HISTO_DATA_FAILED, error);
