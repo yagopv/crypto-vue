@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Header :input-change="search" />
+    <Header :input-change="search" :market-info="marketInfo" />
     <alert
       v-if="error"
       title="Oooops!!"
@@ -9,7 +9,7 @@
       type="danger">
     </alert>
     <div id="page">
-      <transition name="slide-fade">
+      <transition name="fade">
         <router-view />
       </transition>
     </div>
@@ -29,8 +29,12 @@ export default {
   computed: {
     ...mapGetters({
       isLoading: 'isLoading',
-      error: 'getError'
+      error: 'getError',
+      marketInfo: 'getMarketInfo'
     })
+  },
+  created: function() {
+    this.$store.dispatch('getGlobalMarketInfo');
   },
   methods: {
     search: function(searchText) {
@@ -44,27 +48,51 @@ export default {
 };
 </script>
 
-<style>
-body {
-  background-color: #343a40 !important; /* Avoid reboot.css overriding background color */
-  overflow-x: hidden;
-}
-</style>
 
 <style lang="scss">
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';
 
-.slide-fade-enter-active {
-  transition: all 0.4s ease;
+html {
+  font-size: 0.65rem;
+  overflow-x: hidden;
 }
 
-.slide-fade-enter {
-  transform: translateX(20px);
-  opacity: 0;
+@include media-breakpoint-up(sm) {
+  html {
+    font-size: 0.65rem;
+  }
+}
+
+@include media-breakpoint-up(sm) {
+  html {
+    font-size: 0.75rem;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  html {
+    font-size: 0.85rem;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  html {
+    font-size: 1rem;
+  }
 }
 
 body {
   padding-top: 3.5rem;
+  background-color: #343a40 !important; /* Avoid reboot.css overriding background color */
+  overflow-x: hidden;
+}
+
+.fade-enter-active {
+  transition: all 0.4s ease;
+}
+
+.fade-enter {
+  opacity: 0;
 }
 
 .pointer {

@@ -1,5 +1,5 @@
 import * as types from '../mutation-types';
-import { getHistoData } from '@/api/histodata';
+import { getHistoData } from '@/api/api';
 
 // Initial state
 const state = {

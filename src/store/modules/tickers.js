@@ -1,5 +1,5 @@
 import * as types from '../mutation-types';
-import { getTickers, getCoinList } from '@/api/tickers';
+import { getTickers, getCoinList } from '@/api/api';
 import map from 'lodash/map';
 import mapKeys from 'lodash/mapKeys';
 import orderBy from 'lodash/orderBy';
@@ -9,6 +9,7 @@ import filter from 'lodash/filter';
 // Initial state
 const state = {
   byId: {},
+  global: null,
   sortKey: { rank: 'Number' },
   sortOrder: 'asc',
   searchValue: ''
@@ -82,7 +83,6 @@ const actions = {
       const coinListResult = await coinList;
 
       if (coinListResult.data['Response'] === 'Error') {
-        console.log(coinListResult);
         throw new Error(coinListResult.data['ErrorsSummary']);
       }
 
@@ -103,6 +103,8 @@ const actions = {
       commit(types.GET_TICKERS_FAILED, error);
     }
   },
+
+  async getGlobalMarketData({ commit }) {},
 
   sortBy({ commit }, { key, type }) {
     commit(types.SORT_TICKERS, { key, type });

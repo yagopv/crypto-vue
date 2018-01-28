@@ -1,6 +1,30 @@
 import cachios from 'cachios';
 import * as constants from '@/utils/constants';
 
+const getTickers = async () => {
+  const response = await cachios.get(
+    `${constants.COINMARKETCAP_ROOT_URL}/ticker/?limit=0`,
+    { ttl: 300 }
+  );
+  return response;
+};
+
+const getGlobalMarketInfo = async () => {
+  const response = await cachios.get(
+    `${constants.COINMARKETCAP_ROOT_URL}/global/`,
+    { ttl: 300 }
+  );
+  return response;
+};
+
+const getCoinList = async () => {
+  const response = await cachios.get(
+    `${constants.CRYPTOCOMPARE_ROOT_URL}/data/all/coinlist`,
+    { ttl: 300 }
+  );
+  return response;
+};
+
 const getHistoData = async (symbol, interval) => {
   const response = await cachios.get(getBaseUrl(symbol, interval), {
     ttl: 300
@@ -25,4 +49,4 @@ function getBaseUrl(symbol, interval) {
   }
 }
 
-export { getHistoData };
+export { getHistoData, getTickers, getCoinList, getGlobalMarketInfo };

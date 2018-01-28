@@ -60,6 +60,21 @@ const mutations = {
   [types.GET_HISTO_DATA_FAILED](state, error) {
     state.loading = false;
     state.error = error;
+  },
+
+  [types.GET_GLOBAL_MARKET_DATA](state) {
+    state.loading = true;
+    state.error = null;
+  },
+
+  [types.GET_GLOBAL_MARKET_DATA_SUCCESS](state, { data, symbol }) {
+    state.loading = false;
+    state.error = null;
+  },
+
+  [types.GET_GLOBAL_MARKET_DATA_FAILED](state, error) {
+    state.loading = false;
+    state.error = error;
   }
 };
 

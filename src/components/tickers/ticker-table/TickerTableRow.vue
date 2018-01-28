@@ -1,6 +1,6 @@
 <template>
   <tr class="pointer" @click="selectTicker(ticker)">
-    <th scope="row">
+    <th class="d-none d-xl-table-cell" scope="row">
       <img class="img-fluid" :src="getImageUrl(ticker)" />
     </th>
     <td>
@@ -15,8 +15,8 @@
     </td>
     <td>{{ ticker.price_usd | format('$0.[00]') }}</td>
     <td>{{ ticker.market_cap_usd | format('$0.[00]a') }}</td>
-    <td>{{ ticker.available_supply | format('$0.[00]a') }}</td>
-    <td>{{ ticker.total_supply | format('0.[00]a') }}</td>
+    <td class="d-none d-xl-table-cell">{{ ticker.available_supply | format('$0.[00]a') }}</td>
+    <td class="d-none d-xl-table-cell">{{ ticker.total_supply | format('0.[00]a') }}</td>
     <td>
       <span :class="colorizePercentChange(ticker.percent_change_1h)">
         {{ ticker.percent_change_1h | percentage }}
