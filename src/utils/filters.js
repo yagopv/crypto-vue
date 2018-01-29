@@ -4,7 +4,7 @@ const format = (value, format) => {
   return numeral(value).format(format);
 };
 
-const percentage = value => `${value}%`;
+const percentage = value => (value ? `${value}%` : '0%');
 
 const uppercase = value => value.toUpperCase();
 

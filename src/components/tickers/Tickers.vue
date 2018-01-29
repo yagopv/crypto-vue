@@ -3,10 +3,12 @@
 </template>
 
 <script>
+import { schedule } from '@/utils/helpers';
+
 export default {
   name: 'Tickers',
   created() {
-    this.$store.dispatch('getTickers');
+    schedule(() => this.$store.dispatch('getTickers'), 600000);
   }
 };
 </script>

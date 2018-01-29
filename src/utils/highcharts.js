@@ -299,14 +299,16 @@ const candlestickOptions = {
   },
 
   chart: {
-    height: 700
+    height: window.innerWidth > 768 ? 700 : 550
   },
+
   plotOptions: {
     candlestick: {
       color: '#dc3545',
       upColor: '#28a745'
     }
   },
+
   series: [
     {
       type: 'candlestick',

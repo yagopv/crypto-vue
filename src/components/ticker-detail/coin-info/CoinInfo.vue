@@ -17,23 +17,23 @@
             </b>
           </td>
           <td class="text-center">
-            <b><span class="d-none d-lg-inline">CURRENT</span> PRICE: </b>
+            <b><span class="d-none d-lg-inline">Current</span> price: </b>
             {{ ticker.price_usd | format('$0.[00]') }}
           </td>
-          <td class="text-center d-none d-lg-inline">
-            <b><span class="d-none d-lg-inline">% CHANGE</span> 1h: </b>
+          <td class="text-center d-none d-lg-inline-block">
+            <b><span class="d-none d-lg-inline">% Change</span> 1h: </b>
             <span :class="colorizePercentChange(ticker.percent_change_1h)">
               {{ ticker.percent_change_1h | percentage }}
             </span>
           </td>
           <td class="text-center">
-            <b><span class="d-none d-lg-inline">% CHANGE</span> 24h: </b>
+            <b><span class="d-none d-lg-inline">% Change</span> 24h: </b>
             <span :class="colorizePercentChange(ticker.percent_change_24h)">
               {{ ticker.percent_change_24h | percentage }}
             </span>
           </td>
           <td class="text-center">
-            <b><span class="d-none d-lg-inline">% CHANGE</span> 7d: </b>
+            <b><span class="d-none d-lg-inline">% Change</span> 7d: </b>
             <span :class="colorizePercentChange(ticker.percent_change_7d)">
               {{ ticker.percent_change_7d | percentage }}
             </span>

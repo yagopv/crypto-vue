@@ -12,7 +12,7 @@ const getTickers = async () => {
 const getGlobalMarketInfo = async () => {
   const response = await cachios.get(
     `${constants.COINMARKETCAP_ROOT_URL}/global/`,
-    { ttl: 300 }
+    { ttl: 3600 }
   );
   return response;
 };
@@ -20,7 +20,7 @@ const getGlobalMarketInfo = async () => {
 const getCoinList = async () => {
   const response = await cachios.get(
     `${constants.CRYPTOCOMPARE_ROOT_URL}/data/all/coinlist`,
-    { ttl: 300 }
+    { ttl: 3600 }
   );
   return response;
 };
