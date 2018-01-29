@@ -228,7 +228,9 @@ const treemapOptions = {
       levelIsConstant: false,
       point: {
         events: {
-          click: event => console.log(event)
+          click: event => {
+            location.hash = `#/ticker/${event.point.options.ticker.id}`;
+          }
         }
       },
       tooltip: {
@@ -330,7 +332,6 @@ const candlestickOptions = {
       tooltip: {
         valueDecimals: 2,
         valuePrefix: '$'
-        // pointFormatter: function () {}
       }
     },
     {
