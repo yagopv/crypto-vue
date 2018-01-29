@@ -279,6 +279,10 @@ const candlestickOptions = {
     text: ''
   },
 
+  exporting: {
+    enabled: true
+  },
+
   yAxis: [
     {
       labels: {

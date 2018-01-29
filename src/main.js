@@ -11,6 +11,7 @@ import Highcharts from 'highcharts';
 import { loadTheme } from './utils/highcharts';
 import loadHeatmap from 'highcharts/modules/heatmap';
 import loadTreemap from 'highcharts/modules/treemap';
+import loadExporting from 'highcharts/modules/exporting';
 import loadStock from 'highcharts/modules/stock';
 
 import fontawesome from '@fortawesome/fontawesome';
@@ -23,6 +24,7 @@ import {
 loadStock(Highcharts);
 loadHeatmap(Highcharts);
 loadTreemap(Highcharts);
+loadExporting(Highcharts)
 loadTheme();
 
 fontawesome.library.add(faList, faChartPie, faSync);
