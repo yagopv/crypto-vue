@@ -318,7 +318,7 @@ const candlestickOptions = {
   },
 
   chart: {
-    height: window.innerWidth > 768 ? 700 : 550
+    height: document.documentElement.clientHeight - 100
   },
 
   plotOptions: {

@@ -36,10 +36,24 @@ export default {
         },
         true
       );
+    },
+    setChartHeight(event) {
+      this.$refs.highstocks.chart.setSize(null, document.documentElement.clientHeight - 100);
     }
   },
   mounted: function() {
     this.updateCandlestick(this.ohlcData);
+    this.$nextTick(function() {
+      window.addEventListener('resize', this.setChartHeight);
+
+      //Init
+      this.setChartHeight()
+    })
+  },
+  beforeDestroy() {
+    window.removeEventListener('resize', this.setChartHeight);
   }
 };
 </script>
+
+
