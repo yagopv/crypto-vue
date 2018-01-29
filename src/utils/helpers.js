@@ -11,4 +11,6 @@ const schedule = (fn, timeout) => {
   fn();
 };
 
-export { colorizePercentChange, getImageUrl, schedule };
+const colorizePercentChangeStyle = change => parseInt(change) >= 0 ? '#28a745' : '#dc3545';
+
+export { colorizePercentChange, getImageUrl, schedule, colorizePercentChangeStyle };

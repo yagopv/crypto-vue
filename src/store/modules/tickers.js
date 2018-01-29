@@ -67,7 +67,8 @@ const getters = {
     }).map((ticker, index) => ({
       id: index,
       name: ticker.name,
-      value: parseInt(ticker.market_cap_usd)
+      value: parseInt(ticker.market_cap_usd),
+      ticker
     }));
   }
 };

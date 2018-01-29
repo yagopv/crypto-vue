@@ -1,37 +1,41 @@
 <template>
-  <div class="container-fluid">
+  <div id="treemaps" class="container-fluid">
     <div class="row mb-2 mt-5">
-      <div class="col text-center">
-        <div class="btn-group" role="group">
-          <button
-            type="button"
-            class="btn btn-dark"
-            :class="{active: selectedTreemap === 0}"
-            @click="update(0)">
-            Above the billion
-          </button>
-          <button
-            type="button"
-            class="btn btn-dark"
-            :class="{active: selectedTreemap === 1}"
-            @click="update(1)">
-            100 million to 1 billion
-          </button>
-          <button
-            type="button"
-            class="btn btn-dark"
-            :class="{active: selectedTreemap === 2}"
-            @click="update(2)">
-            1 million to 100 million
-          </button>
-          <button
-            type="button"
-            class="btn btn-dark"
-            :class="{active: selectedTreemap === 3}"
-            @click="update(3)">
-            Under 1 million
-          </button>
-        </div>
+      <div class="col">
+        <ul class="nav nav-pills justify-content-center">
+          <li class="nav-item">
+            <a href="#"
+              class="nav-link text-light"
+              :class="{active: selectedTreemap === 0}"
+              @click="update(0)">
+                Above the billion
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#"
+              class="nav-link text-light"
+              :class="{active: selectedTreemap === 1}"
+              @click="update(1)">
+                100 million to 1 billion
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#"
+              class="nav-link text-light"
+              :class="{active: selectedTreemap === 2}"
+              @click="update(2)">
+                1 million to 100 million
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#"
+              class="nav-link text-light"
+              :class="{active: selectedTreemap === 3}"
+              @click="update(3)">
+                Under 1 million
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
     <div class="row">
@@ -98,3 +102,15 @@ export default {
   components: { Treemap }
 };
 </script>
+
+<style lang="scss" scoped>
+#treemaps {
+  .nav-pills {
+    .nav-link {
+      &.active {
+        background-color: #000
+      }
+    }
+  }
+}
+</style>

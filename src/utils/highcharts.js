@@ -1,5 +1,8 @@
 import Highcharts from 'highcharts';
 
+import { format, percentage } from '@/utils/filters';
+import { colorizePercentChangeStyle } from './helpers';
+
 const loadTheme = () => {
   Highcharts.theme = {
     colors: [
@@ -230,8 +233,18 @@ const treemapOptions = {
       },
       tooltip: {
         valueDecimals: 0,
-        valuePrefix: '$'
-        // pointFormatter: function () {}
+        valuePrefix: '$',
+        pointFormatter: function(template) {
+          console.log(this);
+          const ticker = this.options.ticker;
+          return `
+              <p style="font-weight: bold;font-size:1.05rem;">${ticker.name}</p><br/>
+              <p>Market Cap: ${format(ticker.market_cap_usd, '$0a')}</p><br/>
+              <p>% Change 1h: <span style="color: ${colorizePercentChangeStyle(ticker.percent_change_1h)}">${percentage(ticker.percent_change_1h)}</span></p><br/>
+              <p>% Change 24h: <span style="color: ${colorizePercentChangeStyle(ticker.percent_change_24h)}">${percentage(ticker.percent_change_24h)}</span></p><br/>
+              <p>% Change 7d: <span style="color: ${colorizePercentChangeStyle(ticker.percent_change_7d)}">${percentage(ticker.percent_change_7d)}</span></p><br/>
+          `;
+        }
       },
       levels: [
         {
