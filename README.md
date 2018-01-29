@@ -1,6 +1,6 @@
 # crypto-vue
 
-> A Vue project for cryptocurrencies graph visualization
+> A Vue project for cryptocurrency graph visualizations
 
 ## Build Setup
 
