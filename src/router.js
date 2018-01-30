@@ -1,8 +1,8 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Tickers from '@/components/tickers/Tickers';
-import TickerTable from '@/components/tickers/ticker-table/TickerTable';
-import TickerTreeMap from '@/components/tickers/ticker-treemap/TickerTreeMap';
+
+import TickerTable from '@/components/tickers/TickerTable';
+import TickerTreeMap from '@/components/ticker-treemap/TickerTreeMap';
 import TickerDetail from '@/components/ticker-detail/TickerDetail';
 import About from '@/components/about/About';
 import NotFound from '@/components/not-found/NotFound';
@@ -18,26 +18,19 @@ const router = new Router({
     {
       path: '/tickers',
       name: 'Tickers',
-      component: Tickers,
-      children: [
-        { path: '', redirect: 'coin-list' },
-        {
-          path: 'coin-list',
-          component: TickerTable,
-          meta: { title: 'Coin List' }
-        },
-        {
-          path: 'maps',
-          component: TickerTreeMap,
-          meta: { title: 'Market Capitalization Maps' }
-        }
-      ]
+      component: TickerTable,
+      meta: { title: 'Coin List' }
     },
     {
       path: '/ticker/:id',
       name: 'TickerDetail',
       component: TickerDetail,
       meta: { title: 'Ticker Detail' }
+    },
+    {
+      path: '/market-cap-maps',
+      component: TickerTreeMap,
+      meta: { title: 'Market Capitalization Maps' }
     },
     {
       path: '/about',

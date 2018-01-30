@@ -46,7 +46,6 @@ export default {
     this.$nextTick(function() {
       window.addEventListener('resize', this.setChartHeight);
 
-      //Init
       this.setChartHeight()
     })
   },

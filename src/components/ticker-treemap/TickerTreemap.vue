@@ -98,6 +98,7 @@ export default {
   },
   created: function() {
     this.update(0);
+    this.$store.dispatch('getTickers');
   },
   components: { Treemap }
 };

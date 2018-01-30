@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-  <router-link to="/tickers/coin-list" class="navbar-brand"><b class="text-warning">Crypto-Vue</b></router-link>
+  <router-link to="/tickers" class="navbar-brand"><b class="text-warning">Crypto-Vue</b></router-link>
   <button
     class="navbar-toggler"
     type="button"
@@ -11,10 +11,10 @@
   <div id="navbarSupportedContent" class="navbar-collapse" :class="{collapse: navBarCollapsed}">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item" :class="{'active': subIsActive('/tickers/coin-list')}">
-        <router-link to="/tickers/coin-list" class="nav-link">Coin list</router-link>
+        <router-link to="/tickers" class="nav-link">Coin list</router-link>
       </li>
       <li class="nav-item" :class="{'active': subIsActive('/tickers/maps')}">
-        <router-link to="/tickers/maps" class="nav-link">Market Cap Maps</router-link>
+        <router-link to="/market-cap-maps" class="nav-link">Market Cap Maps</router-link>
       </li>
       <li class="nav-item" :class="{'active': subIsActive('/about')}">
         <router-link to="/about" class="nav-link">About</router-link>

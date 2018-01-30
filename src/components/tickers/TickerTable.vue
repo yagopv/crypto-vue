@@ -30,8 +30,9 @@
 <script>
 import { mapGetters } from 'vuex';
 
-import TickerTableHead from './TickerTableHead';
-import TickerTableRow from './TickerTableRow';
+import TickerTableHead from './ticker-table-head/TickerTableHead';
+import TickerTableRow from './ticker-table-row/TickerTableRow';
+import { schedule } from '@/utils/helpers';
 
 export default {
   data: function() {
@@ -62,6 +63,9 @@ export default {
       this.counter = 100;
       this.$store.dispatch('sortBy', { key, type });
     }
+  },
+  created() {
+    schedule(() => this.$store.dispatch('getTickers'), 600000);
   },
   components: { TickerTableHead, TickerTableRow }
 };
