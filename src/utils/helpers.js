@@ -2,7 +2,7 @@ const colorizePercentChange = change =>
   change >= 0 ? 'text-success' : 'text-danger';
 
 const getImageUrl = ticker =>
-  ticker.meta && `http://cryptocompare.com${ticker.meta.ImageUrl}`;
+  ticker.meta && ticker.meta.ImageUrl && `http://cryptocompare.com${ticker.meta.ImageUrl}`;
 
 const schedule = (fn, timeout) => {
   setTimeout(() => {
