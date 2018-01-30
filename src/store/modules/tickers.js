@@ -94,7 +94,10 @@ const actions = {
       ) {
         tickersResult.data.forEach(ticker => {
           ticker.meta = coinListResult.data['Data'][ticker.symbol];
+
+          // IOTA ticker is different in coinmarketcap than in cryptocompare
           if (ticker.symbol === 'MIOTA') {
+            ticker.symbol = 'IOT';
             ticker.meta = coinListResult.data['Data']['IOT'];
           }
         });
