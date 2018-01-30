@@ -38,7 +38,7 @@ const actions = {
       commit(types.GET_HISTO_DATA);
       const { data } = await getHistoData(symbol, interval);
       if (data['Response'] === 'Error') {
-        throw new Error(data['ErrorsSummary']);
+        throw new Error(data['ErrorsSummary'] || data['Message']);
       }
       commit(types.GET_HISTO_DATA_SUCCESS, { data, symbol });
     } catch (error) {
