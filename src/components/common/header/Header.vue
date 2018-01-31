@@ -10,16 +10,30 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div id="navbarSupportedContent" class="navbar-collapse" :class="{collapse: navBarCollapsed}">
+  <div id="navbarSupportedContent"
+       class="navbar-collapse"
+       :class="{collapse: navBarCollapsed}">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item" :class="{'active': subIsActive('/tickers')}">
-        <router-link to="/tickers" class="nav-link">Coin list</router-link>
+      <li class="nav-item"
+          :class="{'active': subIsActive('/tickers')}"
+          @click="toggleNavbar">
+        <router-link to="/tickers" class="nav-link">
+          Coin list
+        </router-link>
       </li>
-      <li class="nav-item" :class="{'active': subIsActive('//market-cap-maps')}">
-        <router-link to="/market-cap-maps" class="nav-link">Market Cap Maps</router-link>
+      <li class="nav-item"
+          :class="{'active': subIsActive('//market-cap-maps')}"
+          @click="toggleNavbar">
+        <router-link to="/market-cap-maps" class="nav-link">
+          Market Cap Maps
+        </router-link>
       </li>
-      <li class="nav-item" :class="{'active': subIsActive('/about')}">
-        <router-link to="/about" class="nav-link">About</router-link>
+      <li class="nav-item"
+         :class="{'active': subIsActive('/about')}"
+         @click="toggleNavbar">
+        <router-link to="/about" class="nav-link">
+          About
+        </router-link>
       </li>
     </ul>
     <transition name="slide" >
@@ -83,11 +97,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 input {
   &.form-control {
     &:focus {
-      border-color: #FFF;
+      border-color: #fff;
       box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.25);
     }
   }
@@ -115,12 +128,12 @@ input {
 }
 
 .slide-enter-active {
-  animation-duration: .5s;
+  animation-duration: 0.5s;
   animation-fill-mode: both;
   animation-name: slideInRight;
 }
 .slide-leave-active {
-  animation-duration: .5s;
+  animation-duration: 0.5s;
   animation-fill-mode: both;
   animation-name: slideOutRight;
 }
