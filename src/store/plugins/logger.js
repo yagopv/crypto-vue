@@ -1,5 +1,3 @@
-// Credits: borrowed code from fcomb/redux-logger
-
 import { deepCopy } from './util';
 
 export default function createLogger({
