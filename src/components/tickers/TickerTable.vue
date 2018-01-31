@@ -8,7 +8,7 @@
     infinite-scroll-immediate-check="false">
     <div class="row">
       <div class="col">
-        <div class="table-responsive">
+        <div class="table-responsive table-dark">
             <table class="table table-hover table-dark">
               <thead class="thead-dark">
                 <ticker-table-head :sort-by="sortBy"></ticker-table-head>
