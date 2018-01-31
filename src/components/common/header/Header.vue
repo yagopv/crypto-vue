@@ -82,7 +82,7 @@ export default {
     subIsActive: function(input) {
       const paths = Array.isArray(input) ? input : [input];
       return paths.some(path => {
-        return this.$route.path.indexOf(path) === 0; // current path starts with this path string
+        return this.$route.path.indexOf(path) === 0;
       });
     },
     debounceInput: debounce(function(event) {

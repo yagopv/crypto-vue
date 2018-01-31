@@ -4,7 +4,8 @@
     class="container-fluid pl-0 pr-0"
     v-infinite-scroll="addCoins"
     infinite-scroll-distance="600"
-    infinite-scroll-throttle-delay="50">
+    infinite-scroll-throttle-delay="50"
+    infinite-scroll-immediate-check="false">
     <div class="row">
       <div class="col">
         <div class="table-responsive">
@@ -70,6 +71,7 @@ export default {
       () => this.$store.dispatch('getTickers'),
       600000
     );
+    this.addCoins();
   },
   beforeDestroy() {
     clearInterval(this.scheduledTask);

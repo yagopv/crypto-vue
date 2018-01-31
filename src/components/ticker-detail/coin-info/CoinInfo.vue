@@ -18,7 +18,7 @@
           </td>
           <td class="text-center">
             <b><span class="d-none d-lg-inline">Current</span> price: </b>
-            {{ ticker.price_usd | format('$0.[00]') }}
+            {{ ticker.price_usd | format('$0.[000]') }}
           </td>
           <td class="text-center d-none d-lg-inline-block">
             <b><span class="d-none d-lg-inline">% Change</span> 1h: </b>
