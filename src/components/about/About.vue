@@ -44,7 +44,7 @@
       <a class="text-warning" href="#/ticker/ethereum">Coin details</a>
     </h4>
     <p>In the coin detail section you can see a candlestick and volume chart showing all the historical data for the coin.</p>
-    <p>You can zoom the table using date intervals or group candles in periods.</p>
+    <p>You can zoom the table using date intervals or group candles in periods. You can as well print or download an image of the chart.</p>
     <p>Each candle is a day. There are another implementations using a candle per hour or per minute in order to achieve different types of visualizations.
       You can access to this graphs adding a querystring to the url. For example <a class="text-warning" href="#/ticker/ethereum?interval=minute">/ticker/ethereum?interval=minute</a>.
       You can use as intervals 'day', 'hour' or 'minute'.
