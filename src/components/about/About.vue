@@ -27,8 +27,8 @@
       <dd class="col-sm-10">
         <p>- We can take a look to all the cryptocurrencies retrieved from Coinmarketcap.</p>
         <p>- If you press in the table headers you can order the columns.</p>
-        <p>- There is a search field in the navigation bar in order to search for coins in the table.</p>        
-        <p>- Press on a table row to go to the coin details.</p>        
+        <p>- There is a search field in the navigation bar in order to search for coins in the table.</p>
+        <p>- Press on a table row to go to the coin details.</p>
       </dd>
 
       <dt class="col-sm-2"><a class="text-warning" href="#/market-cap-maps">Maps</a></dt>
@@ -43,7 +43,7 @@
       <dd class="col-sm-10">
         <p>- In the crypto detail you can see a chart with a Candlestick and Volume graph showing all the historical data for the coin.</p>
         <p>- You can zoom the table using the intervals and filter by dates.</p>
-        <p>- Each candle is a day. There are another implmentations using a candle per hour or per minute for different types of visualizations. 
+        <p>- Each candle is a day. There are another implmentations using a candle per hour or per minute for different types of visualizations.
              You can access to this graphs adding a querystring to the url. For example <a class="text-warning" href="#/ticker/ethereum?interval=minute">/ticker/ethereum?interval=minute</a>.
              You can use 'day', 'hour' or 'minute' as intervals.
              The change between graphs is not implemented because I had a bug with the graphs ovelapping data when changig datasets, so I remove the feature by the moment.
@@ -60,8 +60,9 @@
       <li>Add realtime to detail graphs.</li>
       <li>Add more data to coin details. The Cryptocompare API can return lot of useful data.</li>
       <li>Improve responsive. Focus on mobile.</li>
-      <li>Improve global error and notifications management.</li>  
-      <li>Add a beautiful footer</li>  
+      <li>Improve global error and notifications management.</li>
+      <li>Add a beautiful footer</li>
+      <li>Nice thing to have would be i18n</li>
     </ul>
   </div>
 </div>
