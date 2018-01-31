@@ -37,7 +37,8 @@ import { schedule } from '@/utils/helpers';
 export default {
   data: function() {
     return {
-      counter: 0
+      counter: 0,
+      scheduledTask: null
     };
   },
   computed: {
@@ -65,7 +66,13 @@ export default {
     }
   },
   created() {
-    schedule(() => this.$store.dispatch('getTickers'), 600000);
+    this.scheduledTask = schedule(
+      () => this.$store.dispatch('getTickers'),
+      600000
+    );
+  },
+  beforeDestroy() {
+    clearInterval(this.scheduledTask);
   },
   components: { TickerTableHead, TickerTableRow }
 };
