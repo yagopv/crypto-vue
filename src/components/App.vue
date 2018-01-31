@@ -53,17 +53,10 @@ export default {
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';
 
 html {
-  font-size: 0.65rem;
   overflow-x: hidden;
 }
 
-@include media-breakpoint-up(sm) {
-  html {
-    font-size: 0.65rem;
-  }
-}
-
-@include media-breakpoint-up(sm) {
+@include media-breakpoint-up(xs) {
   html {
     font-size: 0.75rem;
   }
@@ -77,6 +70,12 @@ html {
 
 @include media-breakpoint-up(lg) {
   html {
+    font-size: 0.95rem;
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  html {
     font-size: 1rem;
   }
 }
@@ -88,7 +87,7 @@ body {
 }
 
 .fade-enter-active {
-  transition: opacity .5s;
+  transition: opacity 0.5s;
 }
 .fade-enter {
   opacity: 0;
