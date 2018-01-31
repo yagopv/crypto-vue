@@ -1,6 +1,6 @@
 <template>
   <div class="table-responsive">
-    <table class="table table-hover table-dark">
+    <table class="table table-dark">
       <tbody>
         <tr class="pointer">
           <td class="d-none d-xl-table-cell">
