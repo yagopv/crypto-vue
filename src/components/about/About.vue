@@ -30,6 +30,7 @@
     <p>If you press in the table headers you can order the columns.</p>
     <p>There is a search field in the navigation bar in order to search for coins in the table.</p>
     <p>Press on a table row to go to the coin details.</p>
+    <p>The coin data is stored in memory but they are not loaded at once for avoiding long rendering times in the v-for loop. A infinite scroller is implemented.</p>
     <p>In the navbar you can see current global market cap, change in the last 24h and the percentage of Bitcoin dominance. </p>
 
     <h4 class="mt-3 mb-3">
