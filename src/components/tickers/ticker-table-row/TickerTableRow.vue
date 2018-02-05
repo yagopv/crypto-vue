@@ -15,8 +15,8 @@
     </td>
     <td>{{ ticker.price_usd | format('$0.[000]') }}</td>
     <td>{{ ticker.market_cap_usd | format('$0.[000]a') }}</td>
-    <td class="d-none d-xl-table-cell">{{ ticker.available_supply | format('$0.[000]a') }}</td>
-    <td class="d-none d-xl-table-cell">{{ ticker.total_supply | format('0.[000]a') }}</td>
+    <td class="d-none d-xl-table-cell">{{ ticker.available_supply | format('0.[0]a') }}</td>
+    <td class="d-none d-xl-table-cell">{{ ticker.total_supply | format('0.[0]a') }}</td>
     <td>
       <span :class="colorizePercentChange(ticker.percent_change_1h)">
         {{ ticker.percent_change_1h | percentage }}
